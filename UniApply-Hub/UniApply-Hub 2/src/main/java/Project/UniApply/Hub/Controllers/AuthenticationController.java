@@ -80,7 +80,7 @@ public class AuthenticationController {
         model.addAttribute(new RegisterStudentsFormDTO());
         model.addAttribute("title", "Student Register");
 
-        return "registerStudent";
+        return "studentRegister";
     }
 
     @PostMapping("/registerStudent")
@@ -92,7 +92,7 @@ public class AuthenticationController {
         // Send user back to form if errors are found
         if (errors.hasErrors()) {
             model.addAttribute("title", "Student Register");
-            return "registerStudent";
+            return "studentRegister";
         }
 // Look up user in database using email they provided in the form
         Students existingStudent = studentsRepository.findByEmail(registerStudentsFormDTO.getEmail());
@@ -100,7 +100,7 @@ public class AuthenticationController {
         if (existingStudent != null) {
             errors.rejectValue("email", "email.alreadyexists", "A user with that email already exists");
             model.addAttribute("title", "Student Register");
-            return "registerStudent";
+            return "studentRegister";
         }
 // Send user back to form if passwords didn't match
         String password = registerStudentsFormDTO.getPassword();
@@ -108,7 +108,7 @@ public class AuthenticationController {
         if (!password.equals(verifyPassword)) {
             errors.rejectValue("password", "passwords.mismatch", "Passwords do not match");
             model.addAttribute("title", "Client Register");
-            return "registerStudent";
+            return "studentRegister";
         }
 
         // OTHERWISE, save new email and hashed password in database, start a new session, and redirect to home page
@@ -117,7 +117,7 @@ public class AuthenticationController {
         studentsRepository.save(newStudent);
         setStudentInSession(request.getSession(), newStudent);
 
-        return "redirect:dashboard";
+        return "redirect:Students/dashboard";
     }
 
 
@@ -131,7 +131,7 @@ public class AuthenticationController {
         model.addAttribute("title", "Register");
         model.addAttribute("loggedIn", session.getAttribute("user") != null);
 
-        return "register";
+        return "UniversityRegister";
     }
 
     @PostMapping("/register")
@@ -141,7 +141,7 @@ public class AuthenticationController {
         // Send user back to form if errors are found
         if (errors.hasErrors()) {
             model.addAttribute("title", "Register");
-            return "register";
+            return "UniversityRegister";
         }
 // Look up user in database using email they provided in the form
         Universities existingUniversityEmail = universitiesRepository.findByEmail(registerUniversitiesFormDTO.getEmail());
@@ -151,13 +151,13 @@ public class AuthenticationController {
         if (existingUniversityEmail != null ) {
             errors.rejectValue("email", "email.alreadyexists", "A University with that email already exists");
             model.addAttribute("title", "Register");
-            return "register";
+            return "UniversityRegister";
         }
         //check  duplicates
         if (existingUniversity != null ) {
             errors.rejectValue("UniversityName", "UniversityName.alreadyexists", "This University Name is already exists");
             model.addAttribute("title", "Register");
-            return "register";
+            return "UniversityRegister";
         }
 // Send user back to form if passwords didn't match
         String password = registerUniversitiesFormDTO.getPassword();
@@ -165,7 +165,7 @@ public class AuthenticationController {
         if (!password.equals(verifyPassword)) {
             errors.rejectValue("password", "passwords.mismatch", "Passwords do not match");
             model.addAttribute("title", "Register");
-            return "register";
+            return "UniversityRegister";
         }
 
 
@@ -248,7 +248,7 @@ public class AuthenticationController {
             setStudentInSession(request.getSession(), theStudent);
 
 // go to the dashboard
-            return "redirect:dashboard";
+            return "redirect:Students/dashboard";
 
         }
     }
