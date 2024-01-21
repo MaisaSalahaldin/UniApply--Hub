@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+   <meta charset="UTF-8">
+   <title th:text="${title}">Log In</title>
+</head>
+<body>
+<h2 th:text="${title}">Log In</h2>
+<form th:action="@{/login}" th:object="${loginFormDTO}" method="post">
+   <label for="email">Email:</label>
+   <input type="text" th:field="*{email}" />
+   <label for="password">Password:</label>
+   <input type="password" th:field="*{password}" />
+   <button type="submit">Log In</button>
+   <h6 class="text-center"><br>Don't have an account? Looking to:<br>
+      <div class="btn-group btn-group-sm" role="group" aria-label="Registration buttons">
+         <button class="btn btn-primary" onclick="window.location.href='/studentRegister'" aria-label="Register as Student">Register as Student</button>
+         <button class="btn btn-primary"  onclick="window.location.href='/UniversityRegister'" aria-label="Register as University">Register as University</button>
+      </div>
+   </h6>
+</form>
+</body>
+</html>

@@ -1,10 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title th:text="${title}">Student Register</title>
 </head>
 <body>
-
+<h2 th:text="${title}">Student Register</h2>
+<form th:action="@{/registerStudent}" th:object="${registerStudentsFormDTO}" method="post">
+    <label for="email">Email:</label>
+    <input type="text" th:field="*{email}" />
+    <label for="password">Password:</label>
+    <input type="password" th:field="*{password}" />
+    <label for="verifyPassword">Verify Password:</label>
+    <input type="password" th:field="*{verifyPassword}" />
+    <label for="phone">Phone:</label>
+    <input type="text" th:field="*{phone}" />
+    <label for="firstName">First Name:</label>
+    <input type="text" th:field="*{firstName}" />
+    <label for="lastName">Last Name:</label>
+    <input type="text" th:field="*{lastName}" />
+    <label for="country">Country:</label>
+    <input type="text" th:field="*{country}" />
+    <button type="submit">Register</button>
+</form>
 </body>
 </html>
