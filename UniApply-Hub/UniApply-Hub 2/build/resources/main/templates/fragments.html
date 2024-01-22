@@ -39,11 +39,11 @@
               aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
          <ul class="navbar-nav ms-auto my-2 my-lg-0">
-            <li th:if="${StudentsLoggedIn}" class="nav-item navbar-brand"><a class="nav-link" href="/Student/dashboard">Dashboard</a></li>
+            <li th:if="${StudentsLoggedIn}" class="nav-item navbar-brand"><a class="nav-link" href="/Students/dashboard">Dashboard</a></li>
             <li th:if="${loggedIn}" class="nav-item navbar-brand"><a class="nav-link" href="/Universities/dashboard">Dashboard</a></li>
 
 
-            <li th:if="${StudentsLoggedIn == true or loggedIn == false}" class="nav-item navbar-brand"><a class="nav-link" href="/Universities">View All University</a></li>
+            <li th:if="${StudentsLoggedIn == true or loggedIn == false}" class="nav-item navbar-brand"><a class="nav-link" href="/Students/showUniversities">View All University</a></li>
             <li class="nav-item navbar-brand"><a class="nav-link" href="../../../../about">About Us</a></li>
 
             <li th:if="${loggedIn == true or StudentsLoggedIn == true}" class="nav-item navbar-brand"><a class="nav-link" href="/logout">Logout</a></li>

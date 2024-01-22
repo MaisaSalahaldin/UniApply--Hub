@@ -171,8 +171,12 @@ public class AuthenticationController {
 
         // OTHERWISE, save new email and hashed password in database, start a new session, and redirect to home page
 
-        Universities newUniversity = new Universities(registerUniversitiesFormDTO.getEmail(), registerUniversitiesFormDTO.getPassword(), registerUniversitiesFormDTO.getPhone(),
-                registerUniversitiesFormDTO.getUniversityName(), registerUniversitiesFormDTO.getAddress(),registerUniversitiesFormDTO.getDescription()
+        Universities newUniversity = new Universities(registerUniversitiesFormDTO.getEmail(),
+                registerUniversitiesFormDTO.getPassword(),
+                registerUniversitiesFormDTO.getPhone(),
+                registerUniversitiesFormDTO.getUniversityName(),
+                registerUniversitiesFormDTO.getAddress()
+                ,registerUniversitiesFormDTO.getDescription()
         ,registerUniversitiesFormDTO.getCity(),registerUniversitiesFormDTO.getZip());
 
         universitiesRepository.save(newUniversity);
@@ -191,7 +195,7 @@ public class AuthenticationController {
             model.addAttribute("loggedIn", session.getAttribute("user") != null);
         }
         else{
-            model.addAttribute("loggedIn", session.getAttribute("student") != null);}
+            model.addAttribute("StudentsLoggedIn", session.getAttribute("student") != null);}
 
 
         return "login";

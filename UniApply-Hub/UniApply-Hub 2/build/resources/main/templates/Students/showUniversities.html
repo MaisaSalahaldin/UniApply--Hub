@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+</head>
+
+<body>
+<form method="post">
+    <table>
+        <thead>
+        <tr>
+            <th></th>
+            <th> Name</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tr th:each="university : ${university}" th:object="${university}">
+            <td th:text="*{UniversityName}"></td>
+        </tr>
+
+    </table>
+
+</form>
+
+<footer th:replace="fragments :: footer">
+</footer>
+</body>
+</html>
