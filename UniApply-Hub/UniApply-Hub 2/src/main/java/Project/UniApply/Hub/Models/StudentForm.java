@@ -3,14 +3,12 @@ package Project.UniApply.Hub.Models;
 
 import com.sun.istack.NotNull;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Objects;
 
-//@Entity
+@Entity
 public class StudentForm {
    @Id
    @GeneratedValue
@@ -34,87 +32,126 @@ public class StudentForm {
 
 
 
-   @NotBlank(message = "First name is required")
-   @Size(min = 3, max = 45, message = "First name must be between 3 and 45 characters")
-   private String firstName;
-   @NotBlank(message = "Last name is required")
-   @Size(min = 3, max = 45, message = "Last name must be between 3 and 45 characters")
-   private String lastName;
-   @NotBlank(message = "Email is required")
-   @Email(message = "Invalid email. Try again.")
-   private String email;
-   @NotBlank(message = "GPA is required")
-   @DecimalMin(value = "0.0", message = "GPA must be equal to or greater than 0.0")
-   @DecimalMax(value = "4.0", message = "GPA must be equal to or less than 4.0")
-   private double gpa;
-   @NotBlank(message = "Education level is required")
-   private String educationLevel;
-   @NotEmpty(message = "References are required")
-   private List<String> references;
-   private String coverLetter;
-   @NotBlank(message = "US citizen information is required")
-   private boolean usCitizen;
-   public StudentForm() {
-   }
-   public StudentForm(String firstName, String lastName, String email, double gpa, String educationLevel,
-                      List<String> references, String coverLetter, boolean usCitizen) {
-       this.firstName = firstName;
-       this.lastName = lastName;
-       this.email = email;
-       this.gpa = gpa;
-       this.educationLevel = educationLevel;
-       this.references = references;
-       this.coverLetter = coverLetter;
-       this.usCitizen = usCitizen;
-   }
-   public String getFirstName() {
-       return firstName;
-   }
-   public void setFirstName(String firstName) {
-       this.firstName = firstName;
-   }
-   public String getLastName() {
-       return lastName;
-   }
-   public void setLastName(String lastName) {
-       this.lastName = lastName;
-   }
-   public String getEmail() {
-       return email;
-   }
-   public void setEmail(String email) {
-       this.email = email;
-   }
-   public double getGpa() {
-       return gpa;
-   }
-   public void setGpa(double gpa) {
-       this.gpa = gpa;
-   }
-   public String getEducationLevel() {
-       return educationLevel;
-   }
-   public void setEducationLevel(String educationLevel) {
-       this.educationLevel = educationLevel;
-   }
-   public List<String> getReferences() {
-       return references;
-   }
-   public void setReferences(List<String> references) {
-       this.references = references;
-   }
-   public String getCoverLetter() {
-       return coverLetter;
-   }
-   public void setCoverLetter(String coverLetter) {
-       this.coverLetter = coverLetter;
-   }
-   public boolean isUsCitizen() {
-       return usCitizen;
-   }
-   public void setUsCitizen(boolean usCitizen) {
-       this.usCitizen = usCitizen;
-   }
+
+    @OneToOne
+    private Students student;
+
+    @NotBlank(message = "First name is required")
+    @Size(min = 3, max = 45, message = "First name must be between 3 and 45 characters")
+    private String firstName;
+
+    @NotBlank(message = "Last name is required")
+    @Size(min = 3, max = 45, message = "Last name must be between 3 and 45 characters")
+    private String lastName;
+
+    @NotBlank(message = "Email is required")
+    @Email(message = "Invalid email. Try again.")
+    private String email;
+
+    @NotBlank(message = "GPA is required")
+    @DecimalMin(value = "0.0", message = "GPA must be equal to or greater than 0.0")
+    @DecimalMax(value = "4.0", message = "GPA must be equal to or less than 4.0")
+    private double gpa;
+
+    // @NotBlank(message = "Education level is required")
+    // @Enumerated(EnumType.STRING)
+    private EducationLevel educationLevel;
+
+    private String reference;
+
+    private String coverLetter;
+
+    @NotBlank(message = "US citizen information is required")
+    private boolean usCitizen;
+
+
+    public StudentForm() {
+    }
+
+    public StudentForm(String firstName, String lastName, String email, double gpa,
+                       String reference, String coverLetter, boolean usCitizen, Students student) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.gpa = gpa;
+        this.reference = reference;
+        this.coverLetter = coverLetter;
+        this.usCitizen = usCitizen;
+        this.student = student;
+    }
+
+    public enum EducationLevel {
+        HIGH_SCHOOL,
+        BACHELOR,
+        MASTER,
+        DOCTORATE,
+
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public double getGpa() {
+        return gpa;
+    }
+
+    public void setGpa(double gpa) {
+        this.gpa = gpa;
+    }
+
+    public EducationLevel getEducationLevel() {
+        return educationLevel;
+    }
+
+    public void setEducationLevel(EducationLevel educationLevel) {
+        this.educationLevel = educationLevel;
+    }
+
+
+    public String getReference() {
+        return reference;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
+
+    public String getCoverLetter() {
+        return coverLetter;
+    }
+
+    public void setCoverLetter(String coverLetter) {
+        this.coverLetter = coverLetter;
+    }
+
+    public boolean isUsCitizen() {
+        return usCitizen;
+    }
+
+    public void setUsCitizen(boolean usCitizen) {
+        this.usCitizen = usCitizen;
+    }
 }
 
 
