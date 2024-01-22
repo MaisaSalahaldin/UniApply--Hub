@@ -7,7 +7,7 @@
          content=" Created by:Maisa Salahaldin,Jood Alzqaili." />
 
    <!-- Favicon-->
-   <link rel="icon" type="image/x-icon" th:href="@{../../../assets/university.ico}" />
+<!--   <link rel="icon" type="image/x-icon" th:href="@{../../../assets/university.ico}" />-->
    <!-- Bootstrap Icons-->
    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
    <!-- Google fonts-->
@@ -33,21 +33,21 @@
 
 <nav th:fragment="navigation" class="navbar navbar-expand-lg navbar-light fixed-top py-3 navbar-shrink" id="mainNav">
    <div class="container px-4 px-lg-5">
-      <a href="/"><span class="navbar-brand drop-shadow">UniApply-Hub</span><img th:src="@{/assets/img/ico.png}" id="nav-icon" class="drop-shadow"/></a>
+      <a href="/"><span class="navbar-brand drop-shadow">UniApply-Hub</span></a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
               data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
               aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
          <ul class="navbar-nav ms-auto my-2 my-lg-0">
-            <li th:if="${loggedIn}" class="nav-item navbar-brand"><a class="nav-link" href="/Student/dashboard">Dashboard</a></li>
+            <li th:if="${StudentsLoggedIn}" class="nav-item navbar-brand"><a class="nav-link" href="/Student/dashboard">Dashboard</a></li>
             <li th:if="${loggedIn}" class="nav-item navbar-brand"><a class="nav-link" href="/Universities/dashboard">Dashboard</a></li>
 
 
-            <li th:if="${clientLoggedIn == true or loggedIn == false}" class="nav-item navbar-brand"><a class="nav-link" href="/Universities">View All University</a></li>
+            <li th:if="${StudentsLoggedIn == true or loggedIn == false}" class="nav-item navbar-brand"><a class="nav-link" href="/Universities">View All University</a></li>
             <li class="nav-item navbar-brand"><a class="nav-link" href="../../../../about">About Us</a></li>
 
-            <li th:if="${loggedIn == true or clientLoggedIn == true}" class="nav-item navbar-brand"><a class="nav-link" href="/logout">Logout</a></li>
-            <li th:unless="${loggedIn == true or clientLoggedIn == true}" class="nav-item navbar-brand"><a class="nav-link" href="/login">Login</a></li>
+            <li th:if="${loggedIn == true or StudentsLoggedIn == true}" class="nav-item navbar-brand"><a class="nav-link" href="/logout">Logout</a></li>
+            <li th:unless="${loggedIn == true or StudentsLoggedIn == true}" class="nav-item navbar-brand"><a class="nav-link" href="/login">Login</a></li>
          </ul>
       </div>
    </div>
@@ -67,6 +67,8 @@
                <p>The premier platform that connects both local and international Students with multiplies Universities in our thriving community.
                   Our mission is clear and powerful: to provide convenient access to Universities,  while supporting the  Universities to reach everywhere. .</p>
             </div>
+<!--            <img src="assets\img\"  class="img-fluid" alt="...">-->
+            <img th:src="@{/assets/img/university.svg}" id="nav-icon" class="drop-shadow"/>
          </div>
          <div></br></br></br></div>
       </div>

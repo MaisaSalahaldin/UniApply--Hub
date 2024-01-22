@@ -75,7 +75,7 @@ public class AuthenticationController {
 //registerClient
 
 
-    @GetMapping("/registerStudent")
+    @GetMapping("/studentRegister")
     public String displayRegistrationStudentForm(Model model, HttpSession session) {
         model.addAttribute(new RegisterStudentsFormDTO());
         model.addAttribute("title", "Student Register");
@@ -83,7 +83,7 @@ public class AuthenticationController {
         return "studentRegister";
     }
 
-    @PostMapping("/registerStudent")
+    @PostMapping("/studentRegister")
     public String processRegistrationStudentForm(@ModelAttribute @Valid RegisterStudentsFormDTO registerStudentsFormDTO,
 
                                                 Errors errors, HttpServletRequest request,
@@ -125,7 +125,7 @@ public class AuthenticationController {
     //farmer  Part
 
 
-    @GetMapping("/register")
+    @GetMapping("/UniversityRegister")
     public String displayUniversitiesRegistrationForm(Model model,HttpSession session) {
         model.addAttribute(new RegisterUniversitiesFormDTO());
         model.addAttribute("title", "Register");
@@ -134,7 +134,7 @@ public class AuthenticationController {
         return "UniversityRegister";
     }
 
-    @PostMapping("/register")
+    @PostMapping("/UniversityRegister")
     public String processUniversitiesRegistrationForm(@ModelAttribute @Valid RegisterUniversitiesFormDTO registerUniversitiesFormDTO,
                                           Errors errors, HttpServletRequest request,
                                           Model model) {

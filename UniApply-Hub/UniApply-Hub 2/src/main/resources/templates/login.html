@@ -1,23 +1,33 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-   <meta charset="UTF-8">
-   <title th:text="${title}">Log In</title>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head class="text-center" th:replace="fragments :: head">
 </head>
+
 <body>
-<h2 th:text="${title}">Log In</h2>
-<form th:action="@{/login}" th:object="${loginFormDTO}" method="post">
-   <label for="email">Email:</label>
-   <input type="text" th:field="*{email}" />
-   <label for="password">Password:</label>
-   <input type="password" th:field="*{password}" />
-   <button type="submit">Log In</button>
+<h2 class="text-center" th:text="${title}">Log In</h2>
+<form th:object="${loginFormDTO}" method="post" >
+  <div>
+      <span  class="input-group-text" style="width: 120%;"><input name="" class="form-control" placeholder="Email" type="text" th:for="email" th:field="*{email}"></span>
+
+
+  </div>
+   <div>
+       <span  class="input-group-text" style="width: 120%;"><input name="" class="form-control" placeholder="password" type="text" th:for="password" th:field="*{password}"></span>
+
+   </div>
+
+ <div class="text-center">
+    <button type="submit">Log In</button>
+ </div>
    <h6 class="text-center"><br>Don't have an account? Looking to:<br>
-      <div class="btn-group btn-group-sm" role="group" aria-label="Registration buttons">
-         <button class="btn btn-primary" onclick="window.location.href='/studentRegister'" aria-label="Register as Student">Register as Student</button>
-         <button class="btn btn-primary"  onclick="window.location.href='/UniversityRegister'" aria-label="Register as University">Register as University</button>
-      </div>
+       <div>
+           <a class="btn btn-primary"  href="/studentRegister"> student</a>
+           <a class="btn btn-primary"  href="/UniversityRegister"> University</a>
+
+       </div>
    </h6>
 </form>
+<footer th:replace="fragments :: footer">
+</footer>
 </body>
 </html>

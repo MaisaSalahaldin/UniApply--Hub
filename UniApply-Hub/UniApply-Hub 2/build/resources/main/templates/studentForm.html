@@ -1,0 +1,14 @@
+<form th:action="@{/student-form/create}" th:object="${studentForm}" method="post">
+
+    <div th:each="field : ${#fields.all}">
+        <label th:for="${field}" th:text="${field}"></label>
+        <input th:if="${field} == 'gpa'" type="number" step="0.01" th:field="*{__${field}__}" />
+        <input th:unless="${field} == 'gpa'" type="text" th:field="*{__${field}__}" />
+
+        <span th:if="${#fields.hasErrors('__${field}__')}">
+            <span th:errors="*{__${field}__}"></span>
+        </span>
+    </div>
+
+    <button type="submit">Submit</button>
+</form>

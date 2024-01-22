@@ -1,27 +1,48 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title th:text="${title}">Student Register</title>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
 </head>
 <body>
 <h2 th:text="${title}">Student Register</h2>
-<form th:action="@{/registerStudent}" th:object="${registerStudentsFormDTO}" method="post">
-    <label for="email">Email:</label>
-    <input type="text" th:field="*{email}" />
-    <label for="password">Password:</label>
-    <input type="password" th:field="*{password}" />
-    <label for="verifyPassword">Verify Password:</label>
-    <input type="password" th:field="*{verifyPassword}" />
-    <label for="phone">Phone:</label>
-    <input type="text" th:field="*{phone}" />
-    <label for="firstName">First Name:</label>
-    <input type="text" th:field="*{firstName}" />
-    <label for="lastName">Last Name:</label>
-    <input type="text" th:field="*{lastName}" />
-    <label for="country">Country:</label>
-    <input type="text" th:field="*{country}" />
-    <button type="submit">Register</button>
+<form method="post" th:object="${registerStudentsFormDTO}" >
+    <div>
+        <span  class="input-group-text" style="width: 120%;"><input name="" class="form-control" placeholder="email" type="text" th:for="email" th:field="*{email}"></span>
+
+    </div>
+   <div>
+       <span  class="input-group-text" style="width: 120%;"><input name="" class="form-control" placeholder="password" type="password" th:for="password" th:field="*{password}"></span>
+
+   </div>
+   <div>
+       <span  class="input-group-text" style="width: 120%;"><input name="" class="form-control" placeholder="Verify Password" type="password" th:for="verifyPassword" th:field="*{verifyPassword}"></span>
+
+
+   </div>
+  <div>
+      <span  class="input-group-text" style="width: 120%;"><input name="" class="form-control" placeholder="Phone" type="text" th:for="phone" th:field="*{phone}"></span>
+
+  </div>
+  <div>
+      <span  class="input-group-text" style="width: 120%;"><input name="" class="form-control" placeholder="first Name" type="text" th:for="firstName" th:field="*{firstName}"></span>
+
+
+  </div>
+   <div>
+       <span  class="input-group-text" style="width: 120%;"><input name="" class="form-control" placeholder="last Name" type="text" th:for="lastName" th:field="*{lastName}"></span>
+
+   </div>
+    <div>
+
+        <span  class="input-group-text" style="width: 120%;"><input name="" class="form-control" placeholder="country" type="text" th:for="country" th:field="*{country}"></span>
+
+    </div>
+    <div>
+        <div class="text-center">
+            <button type="submit">Register</button>
+        </div>
+    </div>
 </form>
+<footer th:replace="fragments :: footer">
+</footer>
 </body>
 </html>
