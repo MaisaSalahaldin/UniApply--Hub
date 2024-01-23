@@ -1,8 +1,6 @@
 
 package Project.UniApply.Hub.Models;
 
-import com.sun.istack.NotNull;
-
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.util.List;
@@ -32,10 +30,6 @@ public class StudentForm {
 
 
 
-
-    @OneToOne
-    private Students student;
-
     @NotBlank(message = "First name is required")
     @Size(min = 3, max = 45, message = "First name must be between 3 and 45 characters")
     private String firstName;
@@ -48,7 +42,7 @@ public class StudentForm {
     @Email(message = "Invalid email. Try again.")
     private String email;
 
-    @NotBlank(message = "GPA is required")
+    @NotNull(message = "GPA is required")
     @DecimalMin(value = "0.0", message = "GPA must be equal to or greater than 0.0")
     @DecimalMax(value = "4.0", message = "GPA must be equal to or less than 4.0")
     private double gpa;
@@ -61,15 +55,24 @@ public class StudentForm {
 
     private String coverLetter;
 
-    @NotBlank(message = "US citizen information is required")
-    private boolean usCitizen;
 
+    private boolean usCitizen;
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    private Students students;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public StudentForm() {
     }
 
     public StudentForm(String firstName, String lastName, String email, double gpa,
-                       String reference, String coverLetter, boolean usCitizen, Students student) {
+                       String reference, String coverLetter, boolean usCitizen) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -77,9 +80,20 @@ public class StudentForm {
         this.reference = reference;
         this.coverLetter = coverLetter;
         this.usCitizen = usCitizen;
-        this.student = student;
-    }
 
+    }
+    public StudentForm(String firstName, String lastName, String email, double gpa,
+                       String reference, String coverLetter, boolean usCitizen,Students students) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.gpa = gpa;
+        this.reference = reference;
+        this.coverLetter = coverLetter;
+        this.usCitizen = usCitizen;
+        this.students=students;
+
+    }
     public enum EducationLevel {
         HIGH_SCHOOL,
         BACHELOR,

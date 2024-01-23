@@ -1,8 +1,12 @@
 package Project.UniApply.Hub.Models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Students extends AbstractEntity {
@@ -17,7 +21,8 @@ public class Students extends AbstractEntity {
     @Size(min = 3, max = 45, message = "Last name must be between 3 and 45 characters")
     @NotBlank(message = "Last name is required")
     private String lastName;
-
+    @OneToMany(cascade  = CascadeType.ALL,mappedBy = "students")
+    private List<StudentForm>  studentForms=new ArrayList<>();
 
     @NotBlank(message = "v name is required")
     private String Country;

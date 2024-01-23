@@ -129,7 +129,7 @@ public class AuthenticationController {
     public String displayUniversitiesRegistrationForm(Model model,HttpSession session) {
         model.addAttribute(new RegisterUniversitiesFormDTO());
         model.addAttribute("title", "Register");
-        model.addAttribute("loggedIn", session.getAttribute("user") != null);
+//        model.addAttribute("loggedIn", session.getAttribute("user") != null);
 
         return "UniversityRegister";
     }

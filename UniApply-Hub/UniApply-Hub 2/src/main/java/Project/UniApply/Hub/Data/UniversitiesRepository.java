@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UniversitiesRepository extends CrudRepository<Universities, Integer> {
     Universities findByEmail(String email);
-    @Query(value = "select * from user where UniversityName= ?1", nativeQuery = true)
+    @Query(value = "select * from universities where UniversityName= ?1", nativeQuery = true)
     Universities findByUniversityName(String UniversityName);
 }

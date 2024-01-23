@@ -8,14 +8,18 @@
     <table>
         <thead>
         <tr>
-            <th></th>
+
             <th> Name</th>
-            <th></th>
+
         </tr>
         </thead>
-        <tr th:each="university : ${university}" th:object="${university}">
+        <tr th:each="all : ${all}" th:object="${all}">
             <td th:text="*{UniversityName}"></td>
+
+            <th><a href="/Students/studentForm" > apply</a></th>
+
         </tr>
+
 
     </table>
 
