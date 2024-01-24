@@ -19,7 +19,8 @@ public class StudentForm {
        StudentForm that = (StudentForm) o;
        return id == that.id;
    }
-
+    @OneToOne
+    private Students student;
    @Override
    public int hashCode() {
        return Objects.hash(id);

@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface StudentFormRepository  extends CrudRepository<StudentForm, Integer> {
     StudentForm findByEmail(String email);
+
+
 }

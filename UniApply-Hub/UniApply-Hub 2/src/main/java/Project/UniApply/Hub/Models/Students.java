@@ -1,8 +1,6 @@
 package Project.UniApply.Hub.Models;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
@@ -13,8 +11,11 @@ public class Students extends AbstractEntity {
     public Students() {
     }
 
-    private List<Universities> universities = new ArrayList<>();
+    @ManyToMany(mappedBy = "student")
+    private List<Universities> universities;
 
+@OneToOne
+private StudentForm studentform;
     @NotBlank(message = "First name is required")
     @Size(min = 3, max = 45, message = "First name must be between 3 and 45 characters")
     private String firstName;

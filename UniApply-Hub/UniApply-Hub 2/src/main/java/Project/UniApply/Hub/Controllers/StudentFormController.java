@@ -43,17 +43,7 @@ public class StudentFormController {
             model.addAttribute("educationLevels", StudentForm.EducationLevel.values());
             return "Students/studentForm";
         }
-       // studentFormRepository.save(studentForm);
-       // return "Students/showUniversities";
-        StudentForm savedForm = studentFormRepository.save(studentForm);
-        //List<Universities> selectedUniversities = universitiesRepository.findAllById(studentForm.getUniversities());
 
-        //savedForm.setUniversities(selectedUniversities);
-       // Iterable<Universities> allUniversities = universitiesRepository.findAll();
-
-       // studentFormRepository.save(savedForm);
-       // model.addAttribute("allUniversities", allUniversities);
-       // model.addAttribute("savedForm", savedForm);
         redirectAttributes.addFlashAttribute("successMessage", "Form submitted successfully!");
 
         return "redirect:/Students/showUniversities";

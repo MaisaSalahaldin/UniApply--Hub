@@ -1,9 +1,6 @@
 package Project.UniApply.Hub.Models;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.List;
@@ -17,11 +14,12 @@ public class Universities extends AbstractEntity{
         private List<StudentForm> studentForms;
 
         @ManyToMany
-        private List<Students> students;
+        private List<Students> student;
 
 
 
 
+    private String password;
     @NotBlank(message = "University Name is required")
     @Size(min = 3, max = 45, message = "University Name must be between 3 and 45 characters")
     private String UniversityName;
@@ -71,12 +69,12 @@ public Universities(){
         this.studentForms = studentForms;
     }
 
-    public List<Students> getStudents() {
-        return students;
+    public List<Students> getStudent() {
+        return student;
     }
 
-    public void setStudents(List<Students> students) {
-        this.students = students;
+    public void setStudent(List<Students> student) {
+        this.student = student;
     }
 
     public String getCity() {
@@ -97,6 +95,14 @@ public Universities(){
 
      public String getDescription() {
         return description;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public void setDescription(String description) {

@@ -30,39 +30,76 @@
 <!--</body>-->
 <!--</html>-->
 
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Show Universities</title>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<div>-->
+<!--    <h2>All Universities</h2>-->
+<!--    <table>-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--            <th>University Name</th>-->
+<!--            <th>Address</th>-->
+<!--            <th>Description</th>-->
+<!--            <th>City</th>-->
+<!--            <th>Zip Code</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+
+<!--        <tr th:each="university : ${all}">-->
+<!--            <td th:text="${university.universityName}"></td>-->
+<!--            <td th:text="${university.address}"></td>-->
+<!--            <td th:text="${university.description}"></td>-->
+<!--            <td th:text="${university.city}"></td>-->
+<!--            <td th:text="${university.zip}"></td>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--    </table>-->
+<!--</div>-->
+
+<!--</body>-->
+<!--</html>-->
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Show Universities</title>
 </head>
 <body>
+<h2 th:text="${title}"></h2>
 
-<div>
-    <h2>All Universities</h2>
+<form th:action="@{/Students/applyToUniversities}" method="post">
     <table>
         <thead>
         <tr>
+            <th></th>
             <th>University Name</th>
-            <th>Address</th>
-            <th>Description</th>
-            <th>City</th>
-            <th>Zip Code</th>
+            <!-- Add additional columns as needed -->
         </tr>
         </thead>
         <tbody>
-
+        <!-- Iterate over the list of universities -->
         <tr th:each="university : ${all}">
-            <td th:text="${university.universityName}"></td>
-            <td th:text="${university.address}"></td>
-            <td th:text="${university.description}"></td>
-            <td th:text="${university.city}"></td>
-            <td th:text="${university.zip}"></td>
+            <td th:text="${university.universityName}">University Name</td>
+            <!-- Add other columns as needed -->
+            <td>
+                <input type="checkbox" th:id="${'universityCheckbox_' + university.id}"
+                       th:name="'selectedUniversityIds'" th:value="${university.id}">
+            </td>
         </tr>
+
         </tbody>
     </table>
-</div>
 
+    <!-- Add a submit button for the form -->
+    <button type="submit">Apply to Selected Universities</button>
+</form>
 </body>
 </html>

@@ -15,5 +15,5 @@ public interface UniversitiesRepository extends CrudRepository<Universities, Int
     @Query(value = "select * from universities where UniversityName= ?1", nativeQuery = true)
     Universities findByUniversityName(String UniversityName);
 
-    List<Universities> findAllById(List<Universities> universities);
+  //  List<Universities> findAllById(List<Universities> universities);
 }
