@@ -25,6 +25,8 @@ public class StudentForm {
        return Objects.hash(id);
    }
 
+    @ManyToMany
+    private List<Universities> universities;
 
 
 
@@ -57,7 +59,7 @@ public class StudentForm {
 
 
     private boolean usCitizen;
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @OneToOne
     private Students students;
 
     public int getId() {
@@ -161,6 +163,22 @@ public class StudentForm {
 
     public boolean isUsCitizen() {
         return usCitizen;
+    }
+
+    public List<Universities> getUniversities() {
+        return universities;
+    }
+
+    public void setUniversities(List<Universities> universities) {
+        this.universities = universities;
+    }
+
+    public Students getStudents() {
+        return students;
+    }
+
+    public void setStudents(Students students) {
+        this.students = students;
     }
 
     public void setUsCitizen(boolean usCitizen) {

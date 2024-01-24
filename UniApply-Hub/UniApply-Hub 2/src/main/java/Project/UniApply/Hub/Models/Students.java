@@ -13,6 +13,7 @@ public class Students extends AbstractEntity {
     public Students() {
     }
 
+    private List<Universities> universities = new ArrayList<>();
 
     @NotBlank(message = "First name is required")
     @Size(min = 3, max = 45, message = "First name must be between 3 and 45 characters")
@@ -59,6 +60,18 @@ public class Students extends AbstractEntity {
         this.Country = country;
     }
 
+    public List<Universities> getUniversities() {
+        return universities;
+    }
 
+    public void setUniversities(List<Universities> universities) {
+        this.universities = universities;
+    }
+    public void addUniversity(Universities university) {
+        if (universities == null) {
+            universities = new ArrayList<>();
+        }
+        universities.add(university);
+    }
 
 }

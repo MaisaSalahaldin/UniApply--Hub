@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping("Students")
@@ -35,15 +37,26 @@ public class StudentFormController {
 
     @PostMapping("/studentForm")
     public String submitForm(@ModelAttribute  @Valid StudentForm studentForm,
-                             Errors errors, Model model) {
+                             Errors errors, Model model, RedirectAttributes redirectAttributes) {
         if (errors.hasErrors()) {
             model.addAttribute("title", "Student Form");
             model.addAttribute("educationLevels", StudentForm.EducationLevel.values());
             return "Students/studentForm";
         }
+       // studentFormRepository.save(studentForm);
+       // return "Students/showUniversities";
+        StudentForm savedForm = studentFormRepository.save(studentForm);
+        //List<Universities> selectedUniversities = universitiesRepository.findAllById(studentForm.getUniversities());
 
-        studentFormRepository.save(studentForm);
-        return "redirect:Students/showUniversities";
+        //savedForm.setUniversities(selectedUniversities);
+       // Iterable<Universities> allUniversities = universitiesRepository.findAll();
+
+       // studentFormRepository.save(savedForm);
+       // model.addAttribute("allUniversities", allUniversities);
+       // model.addAttribute("savedForm", savedForm);
+        redirectAttributes.addFlashAttribute("successMessage", "Form submitted successfully!");
+
+        return "redirect:/Students/showUniversities";
     }
 
 
@@ -53,7 +66,7 @@ public class StudentFormController {
         return "Students/dashboard";
     }
     @GetMapping("/showUniversities")
-    public String dispalyAllUniversities(Model model, HttpSession session) {
+    public String displayAllUniversities(Model model, HttpSession session) {
         model.addAttribute("all",universitiesRepository.findAll());
         model.addAttribute("title", "All Universities");
         return "Students/showUniversities";

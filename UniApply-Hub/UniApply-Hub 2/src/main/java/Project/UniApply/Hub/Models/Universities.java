@@ -1,11 +1,26 @@
 package Project.UniApply.Hub.Models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 @Entity
 public class Universities extends AbstractEntity{
+
+
+
+        @ManyToMany
+        private List<StudentForm> studentForms;
+
+        @ManyToMany
+        private List<Students> students;
+
+
+
 
     @NotBlank(message = "University Name is required")
     @Size(min = 3, max = 45, message = "University Name must be between 3 and 45 characters")
@@ -48,7 +63,21 @@ public Universities(){
     }
 
 
+    public List<StudentForm> getStudentForms() {
+        return studentForms;
+    }
 
+    public void setStudentForms(List<StudentForm> studentForms) {
+        this.studentForms = studentForms;
+    }
+
+    public List<Students> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Students> students) {
+        this.students = students;
+    }
 
     public String getCity() {
         return city;
