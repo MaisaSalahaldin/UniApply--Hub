@@ -1,71 +1,4 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns:th="https://www.thymeleaf.org/">-->
-<!--<head th:replace="fragments :: head">-->
-<!--</head>-->
 
-<!--<body>-->
-<!--<form method="post">-->
-<!--    <table>-->
-<!--        <thead>-->
-<!--        <tr>-->
-
-<!--            <th> Name</th>-->
-
-<!--        </tr>-->
-<!--        </thead>-->
-<!--        <tr th:each="all : ${all}" th:object="${all}">-->
-<!--            <td th:text="*{UniversityName}"></td>-->
-
-<!--            <th><a href="/Students/studentForm" > apply</a></th>-->
-
-<!--        </tr>-->
-
-
-<!--    </table>-->
-
-<!--</form>-->
-
-<!--<footer th:replace="fragments :: footer">-->
-<!--</footer>-->
-<!--</body>-->
-<!--</html>-->
-
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-<!--    <title>Show Universities</title>-->
-<!--</head>-->
-<!--<body>-->
-
-<!--<div>-->
-<!--    <h2>All Universities</h2>-->
-<!--    <table>-->
-<!--        <thead>-->
-<!--        <tr>-->
-<!--            <th>University Name</th>-->
-<!--            <th>Address</th>-->
-<!--            <th>Description</th>-->
-<!--            <th>City</th>-->
-<!--            <th>Zip Code</th>-->
-<!--        </tr>-->
-<!--        </thead>-->
-<!--        <tbody>-->
-
-<!--        <tr th:each="university : ${all}">-->
-<!--            <td th:text="${university.universityName}"></td>-->
-<!--            <td th:text="${university.address}"></td>-->
-<!--            <td th:text="${university.description}"></td>-->
-<!--            <td th:text="${university.city}"></td>-->
-<!--            <td th:text="${university.zip}"></td>-->
-<!--        </tr>-->
-<!--        </tbody>-->
-<!--    </table>-->
-<!--</div>-->
-
-<!--</body>-->
-<!--</html>-->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -103,3 +36,39 @@
 </form>
 </body>
 </html>
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Show Universities</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h2 th:text="${title}">All Universities</h2>-->
+
+<!--<form th:action="@{/Students/applyToUniversities}" method="post">-->
+<!--    <table>-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--            <th></th>-->
+<!--            <th>University Name</th>-->
+<!--            &lt;!&ndash; Add additional columns as needed &ndash;&gt;-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        &lt;!&ndash; Iterate over the list of universities &ndash;&gt;-->
+<!--        <tr th:each="university : ${all}">-->
+<!--            <td th:text="${university.universityName}">University Name</td>-->
+<!--            &lt;!&ndash; Add other columns as needed &ndash;&gt;-->
+<!--            <td>-->
+<!--                <input type="checkbox" th:id="${'universityCheckbox_' + university.id}"-->
+<!--                       th:name="selectedUniversityIds" th:value="${university.id}">-->
+<!--            </td>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--    </table>-->
+
+<!--    &lt;!&ndash; Add a submit button for the form &ndash;&gt;-->
+<!--    <button type="submit">Apply to Selected Universities</button>-->
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show University Selection Page</title>
+</head>
+<body>
+<h1>Show University Selection Page</h1>
+
+<form action="/Students/apply" method="post" th:object="${universitySelectionDTO}">
+    <!-- Display all universities with checkboxes -->
+    <!-- Update the Thymeleaf expression to use the correct field name -->
+    <th:block th:each="university : ${allUniversities}">
+        <input type="checkbox" th:id="'university-' + ${university.id}"
+               th:name="selectedUniversitiesIds"
+               th:value="${university.id}"
+               th:checked="${university != null ? university.UniversityName : 'Unknown University'}"/>
+        <label th:for="'university-' + ${university.id}" th:text="${university != null ? university.UniversityName : 'Unknown University'}"></label>
+        <br/>
+    </th:block>
+
+
+    <button type="submit">Apply</button>
+</form>
+</body>
+</html>

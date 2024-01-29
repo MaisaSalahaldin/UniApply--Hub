@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Select Universities</title>
+</head>
+<body>
+<h2>Select Universities to Apply</h2>
+
+<form th:action="@{/universities/select}" method="post" th:object="${universitySelectionDTO}">
+    <table>
+        <thead>
+        <tr>
+            <th></th>
+            <th>University Name</th>
+            <!-- Add additional columns as needed -->
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Iterate over the list of universities -->
+        <tr th:each="university : ${allUniversities}">
+            <td th:text="${university.universityName}">University Name</td>
+            <!-- Add other columns as needed -->
+            <td>
+                <input type="checkbox" th:id="${'universityCheckbox_' + university.id}"
+                       th:name="selectedUniversitiesIds" th:value="${university.id}">
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- Add a hidden field for selectedUniversityIds -->
+    <input type="hidden" th:field="*{selectedUniversityIds}" />
+
+    <!-- Add a submit button for the form -->
+    <button type="submit">Apply to Selected Universities</button>
+</form>
+</body>
+</html>

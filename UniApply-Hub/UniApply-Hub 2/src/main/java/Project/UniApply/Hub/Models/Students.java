@@ -1,21 +1,31 @@
 package Project.UniApply.Hub.Models;
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
+
+@Component
+
 @Entity
 public class Students extends AbstractEntity {
     public Students() {
     }
 
-    @ManyToMany(mappedBy = "student")
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+
+    @JoinTable(
+            name = "universities_student",
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "university_id")
+    )
+
     private List<Universities> universities;
 
-@OneToOne
-private StudentForm studentform;
     @NotBlank(message = "First name is required")
     @Size(min = 3, max = 45, message = "First name must be between 3 and 45 characters")
     private String firstName;
@@ -23,8 +33,7 @@ private StudentForm studentform;
     @Size(min = 3, max = 45, message = "Last name must be between 3 and 45 characters")
     @NotBlank(message = "Last name is required")
     private String lastName;
-    @OneToMany(cascade  = CascadeType.ALL,mappedBy = "students")
-    private List<StudentForm>  studentForms=new ArrayList<>();
+
 
     @NotBlank(message = "v name is required")
     private String Country;
@@ -65,6 +74,8 @@ private StudentForm studentform;
         return universities;
     }
 
+
+
     public void setUniversities(List<Universities> universities) {
         this.universities = universities;
     }
@@ -74,5 +85,6 @@ private StudentForm studentform;
         }
         universities.add(university);
     }
+
 
 }
