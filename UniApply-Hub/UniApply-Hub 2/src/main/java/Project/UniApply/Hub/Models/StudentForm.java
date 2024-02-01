@@ -23,13 +23,15 @@ public class StudentForm {
         StudentForm that = (StudentForm) o;
         return id == that.id;
     }
-    @OneToOne
-    private Students student;
     @Override
     public int hashCode() {
         return Objects.hash(id);
     }
 
+
+
+    @OneToOne
+    private Students student;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "stuForm_uni",
@@ -92,18 +94,7 @@ private  List<Universities> universitie;
         this.usCitizen = usCitizen;
 
     }
-//    public StudentForm(String firstName, String lastName, String email, double gpa,
-//                       String reference, String coverLetter, boolean usCitizen,Students students) {
-//        this.firstName = firstName;
-//        this.lastName = lastName;
-//        this.email = email;
-//        this.gpa = gpa;
-//        this.reference = reference;
-//        this.coverLetter = coverLetter;
-//        this.usCitizen = usCitizen;
-//        this.students=students;
-//
-//    }
+
     public enum EducationLevel {
         HIGH_SCHOOL,
         BACHELOR,

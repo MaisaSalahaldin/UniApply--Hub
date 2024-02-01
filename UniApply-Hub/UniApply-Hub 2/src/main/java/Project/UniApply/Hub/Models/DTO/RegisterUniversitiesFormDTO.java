@@ -30,7 +30,6 @@ public class RegisterUniversitiesFormDTO extends LoginFormDTO{
     private String verifyPassword;
 
 
-
     public String getAddress() {
         return address;
     }
@@ -79,9 +78,7 @@ public class RegisterUniversitiesFormDTO extends LoginFormDTO{
         this.description = description;
     }
 
-
-
-    //    public String getRank() {
+//    public String getRank() {
 //        return rank;
 //    }
 //
