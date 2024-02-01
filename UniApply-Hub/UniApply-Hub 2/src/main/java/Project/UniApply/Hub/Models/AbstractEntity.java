@@ -21,7 +21,7 @@ public abstract class AbstractEntity {
         this.id = id;
     }
 
-    public int getId() {
+    public static int getId() {
         return id;
     }
 
@@ -55,7 +55,7 @@ public abstract class AbstractEntity {
     public boolean isMatchingPassword(String password) {
         return encoder.matches(password, pwHash);
     }
-    public String getEmail() {
+    public static String getEmail() {
         return email;
     }
 

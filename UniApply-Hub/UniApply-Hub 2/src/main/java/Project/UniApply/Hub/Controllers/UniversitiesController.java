@@ -76,40 +76,5 @@ public class UniversitiesController {
 //}
 // StudentFormController
 
-    @GetMapping("/showUniversities")
-    public String displayAllUniversities(Model model, HttpSession session) {
-        model.addAttribute("all", universitiesRepository.findAll());
-        model.addAttribute("title", "All Universities");
-        return "Students/showUniversities";
-    }
 
-    @PostMapping("/applyToUniversities")
-    public String applyToUniversities(@RequestParam("selectedUniversityIds") List<Integer> selectedUniversityIds,
-                                      @ModelAttribute StudentForm studentForm,  HttpServletRequest request,
-                                      Model model) {
-
-        HttpSession session = request.getSession(false);
-       Students student = authenticationController.getStudentFromSession(session);
-
-
-        List<Universities> selectedUniversities = new ArrayList<>();
-
-        for (Integer universityId : selectedUniversityIds) {
-            Universities university = new Universities();
-            university.setId(universityId);
-            selectedUniversities.add(university);
-        }
-
-        student.setUniversities(selectedUniversities);
-
-
-
-       // studentForm.setUniversities(selectedUniversities);
-        studentsRepository.save(student);
-
-        return "redirect:/Students/dashboard";
-    }
 };
-
-
-

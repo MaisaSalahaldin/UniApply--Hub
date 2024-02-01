@@ -75,29 +75,41 @@
 <body>
 <h2 th:text="${title}"></h2>
 
-<form th:action="@{/Students/applyToUniversities}" method="post">
-    <table>
-        <thead>
-        <tr>
-            <th></th>
-            <th>University Name</th>
-            <!-- Add additional columns as needed -->
-        </tr>
-        </thead>
-        <tbody>
-        <!-- Iterate over the list of universities -->
-        <tr th:each="university : ${all}">
-            <td th:text="${university.universityName}">University Name</td>
-            <!-- Add other columns as needed -->
-            <td>
-                <input type="checkbox" th:id="${'universityCheckbox_' + university.id}"
-                       th:name="'selectedUniversityIds'" th:value="${university.id}">
-            </td>
-        </tr>
+<form method="post"  >
+<!--    <table>-->
+<!--        <thead>-->
+<!--        <tr>-->
 
-        </tbody>
-    </table>
+<!--            <th>University Name</th>-->
+<!--            <th></th>-->
+<!--            &lt;!&ndash; Add additional columns as needed &ndash;&gt;-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        &lt;!&ndash; Iterate over the list of universities &ndash;&gt;-->
+<!--        <tr th:each="university : ${all}">-->
+<!--            <td th:text="${university.universityName}">University Name</td>-->
+<!--            &lt;!&ndash; Add other columns as needed &ndash;&gt;-->
+<!--            <td>-->
+<!--                <input type="checkbox"-->
+<!--                       name="uni"-->
+<!--                       th:value="${university.id}"-->
+<!--                       th:field="*{universities}"-->
 
+
+<!--                    >-->
+<!--            </td>-->
+<!--        </tr>-->
+
+<!--        </tbody>-->
+<!--    </table>-->
+    <th:block th:each="university : ${all}">
+        <input type="checkbox"
+               name="uni"
+
+               th:value="${university.id}"/>
+        <label th:text="${university.universityName}"></label>
+    </th:block>
     <!-- Add a submit button for the form -->
     <button type="submit">Apply to Selected Universities</button>
 </form>

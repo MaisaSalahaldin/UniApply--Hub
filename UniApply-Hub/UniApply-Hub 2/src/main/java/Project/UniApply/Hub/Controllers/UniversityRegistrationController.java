@@ -39,7 +39,7 @@ public class UniversityRegistrationController {
 
         Universities university = new Universities();
         university.setEmail(formDTO.getEmail());
-       // university.setPassword(formDTO.getPassword());
+        // university.setPassword(formDTO.getPassword());
         university.setUniversityName(formDTO.getUniversityName());
         university.setAddress(formDTO.getAddress());
         university.setDescription(formDTO.getDescription());
@@ -53,4 +53,3 @@ public class UniversityRegistrationController {
         return "redirect:/universityRegister";
     }
 }
-

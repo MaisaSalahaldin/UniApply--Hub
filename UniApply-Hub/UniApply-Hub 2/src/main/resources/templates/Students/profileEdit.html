@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+</head>
+<body>
+<form method="post" th:object="${information}">
+   <h4>Edit Student Profile:</h4>
+
+   <div>
+      <label> First Name:
+      <input class="form-control" th:field="*{firstName}" />
+      </label>
+      <p class="error" th:errors="*{firstName}"></p>
+   </div>
+   <div>
+      <label> Last Name:
+         <input class="form-control" th:field="*{lastName}" />
+      </label>
+      <p class="error" th:errors="*{lastName}"></p>
+   </div>
+
+   <div>
+      <label> Email:
+         <input class="form-control" th:field="*{email}" />
+      </label>
+      <p class="error" th:errors="*{email}"></p>
+   </div>
+
+   <div>
+      <label> Phone:
+         <input class="form-control" th:field="*{phone}" />
+      </label>
+      <p class="error" th:errors="*{phone}"></p>
+   </div>
+
+   <div>
+      <label> Country:
+         <input class="form-control" th:field="*{Country}" />
+      </label>
+      <p class="error" th:errors="*{Country}"></p>
+   </div>
+
+   <div>
+      <input type="submit" class="btn btn-primary" value="Update" />
+   </div>
+</form>
+
+
+
+</body>
+</html>
