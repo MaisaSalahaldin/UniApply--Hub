@@ -3,6 +3,7 @@ package Project.UniApply.Hub.Models;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -10,16 +11,11 @@ public class Universities extends AbstractEntity{
 
 
 
-        @ManyToMany
-        private List<StudentForm> studentForms;
+    @ManyToMany(mappedBy = "universitie")
+    private  List<StudentForm> studentForms;
 
-        @ManyToMany
-        private List<Students> student;
-
-
-
-
-    private String password;
+    @ManyToMany(mappedBy = "universities")
+    private  List<Students> student;
     @NotBlank(message = "University Name is required")
     @Size(min = 3, max = 45, message = "University Name must be between 3 and 45 characters")
     private String UniversityName;
@@ -30,24 +26,21 @@ public class Universities extends AbstractEntity{
     @Size(min = 3, max = 45, message = "description must be between 3 and 45 characters")
     @NotBlank(message = "description is required")
     private String description;
-//    @Size(min = 3, max = 10, message = "rank must be rank 3 and 10 characters")
-//    @NotBlank(message = "Rank is required")
-//    private String rank;
+
     @NotBlank(message = "City name is required")
     private String city;
 
     @NotBlank(message = "Zip code  is required")
     private String zip ;
 
-public Universities(){
+    public Universities(){
 
-}
+    }
     public Universities(String email, String pwHash, String phone, String universityName, String address, String description,  String city, String zip) {
         super(email, pwHash, phone);
         this.UniversityName = universityName;
         this.address = address;
         this.description = description;
-        //this.rank = rank;
         this.city = city;
         this.zip = zip;
     }
@@ -58,23 +51,6 @@ public Universities(){
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-
-    public List<StudentForm> getStudentForms() {
-        return studentForms;
-    }
-
-    public void setStudentForms(List<StudentForm> studentForms) {
-        this.studentForms = studentForms;
-    }
-
-    public List<Students> getStudent() {
-        return student;
-    }
-
-    public void setStudent(List<Students> student) {
-        this.student = student;
     }
 
     public String getCity() {
@@ -93,34 +69,42 @@ public Universities(){
         this.zip = zip;
     }
 
-     public String getDescription() {
+    public String getDescription() {
         return description;
     }
 
-    public String getPassword() {
-        return password;
-    }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
 
     public void setDescription(String description) {
         this.description = description;
     }
 
-//    public String getRank() {
-//        return rank;
-//    }
-//
-//    public void setRank(String rank) {
-//        this.rank = rank;
-//    }
+
+
+    public List<Students> getStudent() {
+        return student;
+    }
+
     public String getUniversityName() {
         return UniversityName;
     }
 
     public void setUniversityName(String universityName) {
-        this.UniversityName = universityName;
+        UniversityName = universityName;
+    }
+
+    public void setStudent(List<Students> student) {
+        this.student = student;
+    }
+
+    public List<StudentForm> getStudentForms() {
+        return studentForms;
+    }
+    public void addStudentForm(StudentForm studentForm){
+        this.studentForms.add(studentForm);
+    }
+
+    public void setStudentForms(List<StudentForm> studentForms) {
+        this.studentForms = studentForms;
     }
 }

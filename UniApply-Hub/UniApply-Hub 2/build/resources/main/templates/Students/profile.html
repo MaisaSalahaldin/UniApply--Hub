@@ -1,10 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
 </head>
 <body>
+<form  th:object="${StudentInformation}">
+<div class="col-md-6">
+    <h4>Student Profile: <span th:text="*{firstName}"></span> <span th:text="*{lastName}"></span></h4>
+    <div class="table-responsive">
+        <table >
+            <tbody>
 
+            <tr>
+                <td>
+                    <strong>
+                        First Name
+                    </strong>
+                </td>
+                <td>
+                    <p th:text="*{firstName}"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        Last Name
+                    </strong>
+                </td>
+                <td>
+                    <p th:text="*{lastName}"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        Country
+                    </strong>
+                </td>
+                <td>
+                    <p th:text="*{Country}"></p>
+                </td>
+            </tr>
+
+<tr>
+    <td><h3>Contact Information:</h3></td>
+
+
+</tr>
+            <tr>
+
+                <td>
+                    <strong>
+
+                        Phone Number
+                    </strong>
+                </td>
+                <td >
+                    <p th:text="*{phone}"></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>
+                        Email
+                    </strong>
+                </td>
+                <td >
+                    <p th:text="*{email}"></p>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+    <div class="text-center">
+        <a href="/Students/profile/edit" class="btn btn-success">Edit Profile</a>
+    </div>
+
+</form>
+<footer th:replace="fragments :: footer">
+</footer>
 </body>
 </html>

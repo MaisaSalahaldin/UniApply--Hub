@@ -1,38 +1,52 @@
-
 package Project.UniApply.Hub.Models;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
 public class StudentForm {
-   @Id
-   @GeneratedValue
-   private int id;
+    @Id
+    @GeneratedValue
+    private int id;
 
-   @Override
-   public boolean equals(Object o) {
-       if (this == o) return true;
-       if (!(o instanceof StudentForm)) return false;
-       StudentForm that = (StudentForm) o;
-       return id == that.id;
-   }
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof StudentForm)) return false;
+        StudentForm that = (StudentForm) o;
+        return id == that.id;
+    }
     @OneToOne
     private Students student;
-   @Override
-   public int hashCode() {
-       return Objects.hash(id);
-   }
-
-    @ManyToMany
-    private List<Universities> universities;
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "stuForm_uni",
+            joinColumns = {@JoinColumn(name = "studentForm_id")},
+            inverseJoinColumns = {@JoinColumn(name = "university_id")})
+private  List<Universities> universitie;
 
+    public List<Universities> getUniversitie() {
+        return universitie;
+    }
 
-
+    public void setUniversitie(List<Universities> universitie) {
+        this.universitie = universitie;
+    }
+    public void addUniversity(Universities universities){
+        this.universitie.add(universities);
+    }
     @NotBlank(message = "First name is required")
     @Size(min = 3, max = 45, message = "First name must be between 3 and 45 characters")
     private String firstName;
@@ -60,16 +74,9 @@ public class StudentForm {
 
 
     private boolean usCitizen;
-    @OneToOne
-    private Students students;
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+
 
     public StudentForm() {
     }
@@ -85,18 +92,18 @@ public class StudentForm {
         this.usCitizen = usCitizen;
 
     }
-    public StudentForm(String firstName, String lastName, String email, double gpa,
-                       String reference, String coverLetter, boolean usCitizen,Students students) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.gpa = gpa;
-        this.reference = reference;
-        this.coverLetter = coverLetter;
-        this.usCitizen = usCitizen;
-        this.students=students;
-
-    }
+//    public StudentForm(String firstName, String lastName, String email, double gpa,
+//                       String reference, String coverLetter, boolean usCitizen,Students students) {
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//        this.email = email;
+//        this.gpa = gpa;
+//        this.reference = reference;
+//        this.coverLetter = coverLetter;
+//        this.usCitizen = usCitizen;
+//        this.students=students;
+//
+//    }
     public enum EducationLevel {
         HIGH_SCHOOL,
         BACHELOR,
@@ -166,25 +173,16 @@ public class StudentForm {
         return usCitizen;
     }
 
-    public List<Universities> getUniversities() {
-        return universities;
-    }
-
-    public void setUniversities(List<Universities> universities) {
-        this.universities = universities;
-    }
-
-    public Students getStudents() {
-        return students;
-    }
-
-    public void setStudents(Students students) {
-        this.students = students;
-    }
-
     public void setUsCitizen(boolean usCitizen) {
         this.usCitizen = usCitizen;
     }
+    public Students getStudent() {
+        return student;
+    }
+
+    public void setStudent(Students student) {
+        this.student = student;
+    }
+
+
 }
-
-
