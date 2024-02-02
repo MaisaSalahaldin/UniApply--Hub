@@ -107,7 +107,7 @@ public class StudentFormController {
         Students students=authenticationController.getStudentFromSession(session);
 
         model.addAttribute("student",students);
-        model.addAttribute("all",universitiesRepository.findAll());
+        model.addAttribute("all",universitiesRepository.findUniversitiesNotApplied(students.getId()));
         model.addAttribute("title", "All Universities");
         return "Students/showUniversities";
     }
@@ -116,41 +116,13 @@ public String applyToUniversityprocessing(Model model,HttpServletRequest request
 ,@ModelAttribute("student") Students student,@RequestParam(value = "uni" , required = false) ArrayList<Integer> uni
 , Errors errors ){
 
-
-//    if(uni != null) {
-//        SelectedUniversityDTO selectedUniversity =new  SelectedUniversityDTO();
-//        for (int i = 0; i < uni.length; i++) {
-//System.out.println("maysaaa"+uni[i]+"maysaaaaa");
-//            System.out.println(+uni[i]+"shoooo");
-//
-//
-//            if(universitiesRepository.findById(uni[i])!=null) {
-//                //Optional<Universities> universities=universitiesRepository.findById(uni[i]);
-//
-//                selectedUniversity.addUniversity(universitiesRepository.findById(uni[i]).get());
-//
-//
-//            }
-//        }
-//        student.setUniversities(selectedUniversity.getUniversities());
-//        studentsRepository.save(student);
     HttpSession session=request.getSession();
     Students students=authenticationController.getStudentFromSession(session);
 
 
     final List<Universities> newUniversity =
             (List<Universities>) uni.stream().map(id -> universitiesRepository.findById(id).get()).collect(Collectors.toList());
-    //SelectedUniversityDTO selectedUniversityDTO=new SelectedUniversityDTO();
-//    for (int i=0;i<=newUniversity.size();i++){
-//        selectedUniversityDTO.addUniversity(newUniversity.get(i));
-//    }
-//    for(int j=0; j<=students.getUniversities().size();j++){
-//        for (int i=0;i<=newUniversity.size();i++){
-//           if(students.getUniversities().get(j).getId()==newUniversity.get(i).getId()){
-//
-//           }
-//        }
-//    }
+
 
     students.setUniversities(newUniversity);
     StudentForm studentForm=studentFormRepository.findStudentById(students.getId());
@@ -163,60 +135,10 @@ public String applyToUniversityprocessing(Model model,HttpServletRequest request
     studentsRepository.save(students);
 
 
-//    if (!errors.hasErrors()) {
-//Students students=selectedUniversityDTO.getStudents();
-//Universities universities=selectedUniversityDTO.getUniversity();
-//for (int i=0;i<=uni.length;i++) {
-//    if(universitiesRepository.findById(uni[i]).get() !=null)
-//    {
-//        selectedUniversityDTO.addUniversity(universitiesRepository.findById(uni[i]).get());
-//    }
-//    students.setUniversities(selectedUniversityDTO.getUniversities());
-//    studentsRepository.save(students);
-//}
-
-   //}
 
         return "redirect:";
 }
 
-//    @RequestMapping(value = "/applyToUniversities" ,method = {RequestMethod.POST, RequestMethod.GET})
-//    public String applyToUniversitiesProcessing(@RequestParam("university.id") List<Integer> selectedUniversityIds,
-//                                      @ModelAttribute StudentForm studentForm,  HttpServletRequest request,
-//                                      Model model) {
-//
-//        HttpSession session = request.getSession();
-//        Students student = authenticationController.getStudentFromSession(session);
-//        model.addAttribute("all", universitiesRepository.findAll());
-//        model.addAttribute("title", "All Universities");
-//List<Universities> allUniversity=universitiesRepository.findAll();
-//
-//        List<Universities> selectedUniversities = new ArrayList<>();
-//        for(int i=0;i<=allUniversity.size();i++){
-//           for (int j=0;j<=selectedUniversityIds.size();j++){
-//               if(selectedUniversityIds.get(j).equals(allUniversity.get(i).getId())){
-//                   selectedUniversities.add(allUniversity.get(i));
-//               }
-//           }
-//        }
-//        student.addUniversities((Universities) selectedUniversities);
-//        studentsRepository.save(student);
-////
-////        for (Integer universityId : selectedUniversityIds) {
-////            Universities university = new Universities();
-////            university.setId(universityId);
-////            selectedUniversities.add(university);
-////        }
-////
-////        student.setUniversities(selectedUniversities);
-//
-//
-//
-//        // studentForm.setUniversities(selectedUniversities);
-//        //studentsRepository.save(student);
-//
-//        return "redirect:/Students/dashboard";
-//    }
     @GetMapping("/profile")
     public String displayStudentProfile(Model model, HttpServletRequest request) {
         HttpSession session = request.getSession();

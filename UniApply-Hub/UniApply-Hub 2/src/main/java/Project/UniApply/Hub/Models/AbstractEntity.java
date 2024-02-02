@@ -15,13 +15,8 @@ public abstract class AbstractEntity {
     @Id
     @GeneratedValue
     private int id;
-    public AbstractEntity() {
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
 
-    public static int getId() {
+    public int getId() {
         return id;
     }
 
@@ -47,6 +42,9 @@ public abstract class AbstractEntity {
     private String pwHash;
     @NotBlank(message = "Phone number is required")
     private String phone;
+    public AbstractEntity(){
+
+    }
     public AbstractEntity(String email, String pwHash,  String phone) {
         this.email = email;
         this.pwHash = encoder.encode(pwHash);
@@ -55,7 +53,8 @@ public abstract class AbstractEntity {
     public boolean isMatchingPassword(String password) {
         return encoder.matches(password, pwHash);
     }
-    public static String getEmail() {
+
+    public String getEmail() {
         return email;
     }
 
@@ -63,6 +62,9 @@ public abstract class AbstractEntity {
         this.email = email;
     }
 
+    public String getPwHash() {
+        return pwHash;
+    }
 
 
     public String getPhone() {
@@ -71,5 +73,9 @@ public abstract class AbstractEntity {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
