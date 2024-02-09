@@ -1,8 +1,10 @@
 package Project.UniApply.Hub.Controllers;
 
+import Project.UniApply.Hub.Data.ApplicationStatusRepository;
 import Project.UniApply.Hub.Data.StudentFormRepository;
 import Project.UniApply.Hub.Data.StudentsRepository;
 import Project.UniApply.Hub.Data.UniversitiesRepository;
+import Project.UniApply.Hub.Models.ApplicationStatus;
 import Project.UniApply.Hub.Models.DTO.SelectedUniversityDTO;
 import Project.UniApply.Hub.Models.StudentForm;
 import Project.UniApply.Hub.Models.Students;
@@ -34,6 +36,9 @@ public class StudentFormController {
     UniversitiesRepository universitiesRepository;
     @Autowired
     AuthenticationController authenticationController;
+    @Autowired
+    ApplicationStatusRepository applicationStatusRepository;
+
     @Autowired
     StudentsRepository studentsRepository;
     @GetMapping("/studentForm")
@@ -118,7 +123,10 @@ public String applyToUniversityprocessing(Model model,HttpServletRequest request
 
     HttpSession session=request.getSession();
     Students students=authenticationController.getStudentFromSession(session);
-
+if(studentFormRepository.findStudentById(students.getId())==null){
+   // model.addAttribute("errorMessage","form needs to be filled");
+    return "redirect:studentForm";
+}
 
     final List<Universities> newUniversity =
             (List<Universities>) uni.stream().map(id -> universitiesRepository.findById(id).get()).collect(Collectors.toList());
@@ -128,12 +136,17 @@ public String applyToUniversityprocessing(Model model,HttpServletRequest request
     StudentForm studentForm=studentFormRepository.findStudentById(students.getId());
    for(int i=0;i<newUniversity.size();i++){
        studentForm.addUniversity(newUniversity.get(i));
+       ApplicationStatus applicationStatus=new ApplicationStatus();
+//applicationStatus.setApplicationStatusType();
+       applicationStatus.setStudentForm(studentForm);
+       applicationStatus.setUniversities( newUniversity.get(i));
+       applicationStatus.setApplicationStatusType(ApplicationStatus.ApplicationStatusType.PENDING);
+       applicationStatusRepository.save(applicationStatus);
 
    }
     studentFormRepository.save(studentForm);
 
     studentsRepository.save(students);
-
 
 
         return "redirect:";
@@ -178,5 +191,18 @@ if(errors.hasErrors()){
         studentsRepository.save(student);
 
         return "redirect:";
+}
+@GetMapping("/universityRespond")
+    public String UniversityRespond(Model model,HttpServletRequest request){
+
+        HttpSession session=request.getSession();
+        Students student=authenticationController.getStudentFromSession(session);
+
+        List<ApplicationStatus> applicationStatuses=applicationStatusRepository.findByUniversity(student.getId());
+model.addAttribute("applicationStatuses",applicationStatuses);
+
+
+
+        return "Students/universityRespond";
 }
 }

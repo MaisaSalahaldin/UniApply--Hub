@@ -1,7 +1,9 @@
 package Project.UniApply.Hub.Models;
 
+import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;

@@ -1,5 +1,6 @@
 package Project.UniApply.Hub.Data;
 
+import Project.UniApply.Hub.Models.StudentForm;
 import Project.UniApply.Hub.Models.Students;
 import Project.UniApply.Hub.Models.Universities;
 import org.springframework.data.jpa.repository.Query;
@@ -8,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface UniversitiesRepository extends CrudRepository<Universities, Integer> {
@@ -21,4 +23,5 @@ public interface UniversitiesRepository extends CrudRepository<Universities, Int
 
     @Query(value = " SELECT * FROM Universities  WHERE Universities.id NOT IN (SELECT stuform_uni.university_id FROM stuform_uni  left join studentform on  studentform.id=stuform_uni .studentForm_id WHERE studentform.student_id =?1)", nativeQuery = true)
     List<Universities> findUniversitiesNotApplied(int studentId);
+
 }

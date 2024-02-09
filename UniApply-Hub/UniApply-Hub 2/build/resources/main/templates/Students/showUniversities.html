@@ -1,117 +1,157 @@
+<!--&lt;!&ndash;<!DOCTYPE html>&ndash;&gt;-->
+<!--&lt;!&ndash;<html lang="en" xmlns:th="https://www.thymeleaf.org/">&ndash;&gt;-->
+<!--&lt;!&ndash;<head th:replace="fragments :: head">&ndash;&gt;-->
+<!--&lt;!&ndash;</head>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<body>&ndash;&gt;-->
+<!--&lt;!&ndash;<form method="post">&ndash;&gt;-->
+<!--&lt;!&ndash;    <table>&ndash;&gt;-->
+<!--&lt;!&ndash;        <thead>&ndash;&gt;-->
+<!--&lt;!&ndash;        <tr>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <th> Name</th>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;        </thead>&ndash;&gt;-->
+<!--&lt;!&ndash;        <tr th:each="all : ${all}" th:object="${all}">&ndash;&gt;-->
+<!--&lt;!&ndash;            <td th:text="*{UniversityName}"></td>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <th><a href="/Students/studentForm" > apply</a></th>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        </tr>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;    </table>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</form>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<footer th:replace="fragments :: footer">&ndash;&gt;-->
+<!--&lt;!&ndash;</footer>&ndash;&gt;-->
+<!--&lt;!&ndash;</body>&ndash;&gt;-->
+<!--&lt;!&ndash;</html>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<!DOCTYPE html>&ndash;&gt;-->
+<!--&lt;!&ndash;<html lang="en" xmlns:th="http://www.thymeleaf.org">&ndash;&gt;-->
+<!--&lt;!&ndash;<head>&ndash;&gt;-->
+<!--&lt;!&ndash;    <meta charset="UTF-8">&ndash;&gt;-->
+<!--&lt;!&ndash;    <meta name="viewport" content="width=device-width, initial-scale=1.0">&ndash;&gt;-->
+<!--&lt;!&ndash;    <title>Show Universities</title>&ndash;&gt;-->
+<!--&lt;!&ndash;</head>&ndash;&gt;-->
+<!--&lt;!&ndash;<body>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<div>&ndash;&gt;-->
+<!--&lt;!&ndash;    <h2>All Universities</h2>&ndash;&gt;-->
+<!--&lt;!&ndash;    <table>&ndash;&gt;-->
+<!--&lt;!&ndash;        <thead>&ndash;&gt;-->
+<!--&lt;!&ndash;        <tr>&ndash;&gt;-->
+<!--&lt;!&ndash;            <th>University Name</th>&ndash;&gt;-->
+<!--&lt;!&ndash;            <th>Address</th>&ndash;&gt;-->
+<!--&lt;!&ndash;            <th>Description</th>&ndash;&gt;-->
+<!--&lt;!&ndash;            <th>City</th>&ndash;&gt;-->
+<!--&lt;!&ndash;            <th>Zip Code</th>&ndash;&gt;-->
+<!--&lt;!&ndash;        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;        </thead>&ndash;&gt;-->
+<!--&lt;!&ndash;        <tbody>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <tr th:each="university : ${all}">&ndash;&gt;-->
+<!--&lt;!&ndash;            <td th:text="${university.universityName}"></td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td th:text="${university.address}"></td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td th:text="${university.description}"></td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td th:text="${university.city}"></td>&ndash;&gt;-->
+<!--&lt;!&ndash;            <td th:text="${university.zip}"></td>&ndash;&gt;-->
+<!--&lt;!&ndash;        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;        </tbody>&ndash;&gt;-->
+<!--&lt;!&ndash;    </table>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</body>&ndash;&gt;-->
+<!--&lt;!&ndash;</html>&ndash;&gt;-->
 <!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns:th="https://www.thymeleaf.org/">-->
-<!--<head th:replace="fragments :: head">-->
-<!--</head>-->
-
-<!--<body>-->
-<!--<form method="post">-->
-<!--    <table>-->
-<!--        <thead>-->
-<!--        <tr>-->
-
-<!--            <th> Name</th>-->
-
-<!--        </tr>-->
-<!--        </thead>-->
-<!--        <tr th:each="all : ${all}" th:object="${all}">-->
-<!--            <td th:text="*{UniversityName}"></td>-->
-
-<!--            <th><a href="/Students/studentForm" > apply</a></th>-->
-
-<!--        </tr>-->
-
-
-<!--    </table>-->
-
-<!--</form>-->
-
-<!--<footer th:replace="fragments :: footer">-->
-<!--</footer>-->
-<!--</body>-->
-<!--</html>-->
-
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
 <!--<head>-->
 <!--    <meta charset="UTF-8">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
 <!--    <title>Show Universities</title>-->
 <!--</head>-->
 <!--<body>-->
+<!--<h2 th:text="${title}"></h2>-->
 
-<!--<div>-->
-<!--    <h2>All Universities</h2>-->
-<!--    <table>-->
-<!--        <thead>-->
-<!--        <tr>-->
-<!--            <th>University Name</th>-->
-<!--            <th>Address</th>-->
-<!--            <th>Description</th>-->
-<!--            <th>City</th>-->
-<!--            <th>Zip Code</th>-->
-<!--        </tr>-->
-<!--        </thead>-->
-<!--        <tbody>-->
+<!--<form method="post"  >-->
+<!--&lt;!&ndash;    <table>&ndash;&gt;-->
+<!--&lt;!&ndash;        <thead>&ndash;&gt;-->
+<!--&lt;!&ndash;        <tr>&ndash;&gt;-->
 
-<!--        <tr th:each="university : ${all}">-->
-<!--            <td th:text="${university.universityName}"></td>-->
-<!--            <td th:text="${university.address}"></td>-->
-<!--            <td th:text="${university.description}"></td>-->
-<!--            <td th:text="${university.city}"></td>-->
-<!--            <td th:text="${university.zip}"></td>-->
-<!--        </tr>-->
-<!--        </tbody>-->
-<!--    </table>-->
-<!--</div>-->
+<!--&lt;!&ndash;            <th>University Name</th>&ndash;&gt;-->
+<!--&lt;!&ndash;            <th></th>&ndash;&gt;-->
+<!--&lt;!&ndash;            &lt;!&ndash; Add additional columns as needed &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;        </tr>&ndash;&gt;-->
+<!--&lt;!&ndash;        </thead>&ndash;&gt;-->
+<!--&lt;!&ndash;        <tbody>&ndash;&gt;-->
+<!--&lt;!&ndash;        &lt;!&ndash; Iterate over the list of universities &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;        <tr th:each="university : ${all}">&ndash;&gt;-->
+<!--&lt;!&ndash;            <td th:text="${university.universityName}">University Name</td>&ndash;&gt;-->
+<!--&lt;!&ndash;            &lt;!&ndash; Add other columns as needed &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;            <td>&ndash;&gt;-->
+<!--&lt;!&ndash;                <input type="checkbox"&ndash;&gt;-->
+<!--&lt;!&ndash;                       name="uni"&ndash;&gt;-->
+<!--&lt;!&ndash;                       th:value="${university.id}"&ndash;&gt;-->
+<!--&lt;!&ndash;                       th:field="*{universities}"&ndash;&gt;-->
 
+
+<!--&lt;!&ndash;                    >&ndash;&gt;-->
+<!--&lt;!&ndash;            </td>&ndash;&gt;-->
+<!--&lt;!&ndash;        </tr>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        </tbody>&ndash;&gt;-->
+<!--&lt;!&ndash;    </table>&ndash;&gt;-->
+<!--    <th:block th:each="university : ${all}">-->
+<!--        <input type="checkbox"-->
+<!--               name="uni"-->
+
+<!--               th:value="${university.id}"/>-->
+<!--        <label th:text="${university.universityName}"></label>-->
+<!--    </th:block>-->
+<!--    &lt;!&ndash; Add a submit button for the form &ndash;&gt;-->
+<!--    <button type="submit">Apply to Selected Universities</button>-->
+<!--</form>-->
 <!--</body>-->
 <!--</html>-->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Show Universities</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
 <body>
-<h2 th:text="${title}"></h2>
-
-<form method="post"  >
-<!--    <table>-->
-<!--        <thead>-->
-<!--        <tr>-->
-
-<!--            <th>University Name</th>-->
-<!--            <th></th>-->
-<!--            &lt;!&ndash; Add additional columns as needed &ndash;&gt;-->
-<!--        </tr>-->
-<!--        </thead>-->
-<!--        <tbody>-->
-<!--        &lt;!&ndash; Iterate over the list of universities &ndash;&gt;-->
-<!--        <tr th:each="university : ${all}">-->
-<!--            <td th:text="${university.universityName}">University Name</td>-->
-<!--            &lt;!&ndash; Add other columns as needed &ndash;&gt;-->
-<!--            <td>-->
-<!--                <input type="checkbox"-->
-<!--                       name="uni"-->
-<!--                       th:value="${university.id}"-->
-<!--                       th:field="*{universities}"-->
-
-
-<!--                    >-->
-<!--            </td>-->
-<!--        </tr>-->
-
-<!--        </tbody>-->
-<!--    </table>-->
-    <th:block th:each="university : ${all}">
-        <input type="checkbox"
-               name="uni"
-
-               th:value="${university.id}"/>
-        <label th:text="${university.universityName}"></label>
-    </th:block>
-    <!-- Add a submit button for the form -->
-    <button type="submit">Apply to Selected Universities</button>
-</form>
+<div class="container mt-5">
+    <h2 th:text="${title}"></h2>
+    <form method="post">
+        <div class="form-group">
+            <div class="list-group">
+                <th:block th:each="university : ${all}">
+                    <label class="list-group-item">
+                        <input type="checkbox" class="form-check-input"
+                               name="uni"
+                               th:value="${university.id}"/>
+                        <span th:text="${university.universityName}"></span>
+                    </label>
+                </th:block>
+            </div>
+        </div>
+        <!-- Add a submit button for the form -->
+        <button type="submit" class="btn btn-primary">Apply to Selected Universities</button>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+        integrity="sha384-5PNNghICW9P3OWJIZqLm5HSNz6BRvuF8wctChJ90EgRCC1iuT0xJ7z9JQ9ryLTcH"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shCpw6Vf5G5Rn7rbKf60+orNb3uPbMI945LwD"
+        crossorigin="anonymous"></script>
 </body>
 </html>

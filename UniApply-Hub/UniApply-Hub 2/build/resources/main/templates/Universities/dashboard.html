@@ -3,6 +3,33 @@
 <head th:replace="fragments :: head">
 </head>
 <body>
-<p> welcome to University dashboard </p>
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="nf nf-md-order_bool_ascending_variant"></h1>
+                <h5 class="card-title"> Forms </h5>
+                <p class="card-text">See All Forms</p>
+                <a th:href="@{/Universities/showForms}" class="stretched-link"></a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="pi-user-edit"></h1>
+
+                <h5 class="card-title">Profile</h5>
+                <p class="card-text">See Your Profile</p>
+                <a th:href="@{/Universities/profile}" class="stretched-link"></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer th:replace="fragments :: footer">
+</footer>
 </body>
 </html>
