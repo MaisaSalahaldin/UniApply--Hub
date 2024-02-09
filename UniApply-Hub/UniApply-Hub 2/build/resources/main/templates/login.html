@@ -1,33 +1,71 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="https://www.thymeleaf.org/">-->
+<!--<head class="text-center" th:replace="fragments :: head">-->
+<!--</head>-->
+
+<!--<body>-->
+<!--<h2 class="text-center" th:text="${title}">Log In</h2>-->
+<!--<form th:object="${loginFormDTO}" method="post" >-->
+<!--  <div>-->
+<!--      <span  class="input-group-text" style="width: 120%;"><input name="" class="form-control" placeholder="Email" type="text" th:for="email" th:field="*{email}"></span>-->
+
+
+<!--  </div>-->
+<!--   <div>-->
+<!--       <span  class="input-group-text" style="width: 120%;"><input name="" class="form-control" placeholder="password" type="text" th:for="password" th:field="*{password}"></span>-->
+
+<!--   </div>-->
+
+<!-- <div class="text-center">-->
+<!--    <button type="submit">Log In</button>-->
+<!-- </div>-->
+<!--   <h6 class="text-center"><br>Don't have an account? Looking to:<br>-->
+<!--       <div>-->
+<!--           <a class="btn btn-primary"  href="/studentRegister"> student</a>-->
+<!--           <a class="btn btn-primary"  href="/UniversityRegister"> University</a>-->
+
+<!--       </div>-->
+<!--   </h6>-->
+<!--</form>-->
+<!--<footer th:replace="fragments :: footer">-->
+<!--</footer>-->
+<!--</body>-->
+<!--</html>-->
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
 <head class="text-center" th:replace="fragments :: head">
+    <title>Login</title>
 </head>
 
 <body>
-<h2 class="text-center" th:text="${title}">Log In</h2>
-<form th:object="${loginFormDTO}" method="post" >
-  <div>
-      <span  class="input-group-text" style="width: 120%;"><input name="" class="form-control" placeholder="Email" type="text" th:for="email" th:field="*{email}"></span>
+<div class="container mt-5">
+    <h2 class="text-center" th:text="${title}">Log In</h2>
+    <form th:object="${loginFormDTO}" method="post" class="needs-validation" novalidate>
+        <div class="input-group mb-3">
+            <input name="email" class="form-control" placeholder="Email" type="text" th:field="*{email}" required>
+            <div class="invalid-feedback">Please provide a valid email.</div>
+        </div>
+        <div class="input-group mb-3">
+            <input name="password" class="form-control" placeholder="Password" type="password" th:field="*{password}" required>
+            <div class="invalid-feedback">Please provide a password.</div>
+        </div>
 
+        <div class="text-center mb-3">
+            <button type="submit" class="btn btn-primary">Log In</button>
+        </div>
 
-  </div>
-   <div>
-       <span  class="input-group-text" style="width: 120%;"><input name="" class="form-control" placeholder="password" type="text" th:for="password" th:field="*{password}"></span>
+        <h6 class="text-center">Don't have an account? Looking to:</h6>
+        <div class="text-center">
+            <a class="btn btn-primary mr-2" href="/studentRegister">Student</a>
+            <a class="btn btn-primary" href="/UniversityRegister">University</a>
+        </div>
+    </form>
+</div>
 
-   </div>
-
- <div class="text-center">
-    <button type="submit">Log In</button>
- </div>
-   <h6 class="text-center"><br>Don't have an account? Looking to:<br>
-       <div>
-           <a class="btn btn-primary"  href="/studentRegister"> student</a>
-           <a class="btn btn-primary"  href="/UniversityRegister"> University</a>
-
-       </div>
-   </h6>
-</form>
-<footer th:replace="fragments :: footer">
-</footer>
+<!-- Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

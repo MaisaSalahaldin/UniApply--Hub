@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>University Responses</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1>University Responses</h1>
+    <table class="table table-bordered mt-3">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">University</th>
+            <th scope="col">Application Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Loop through the list of applicationStatuses -->
+    <tr th:each="form : ${applicationStatuses}">
+        <!-- Other columns -->
+        <td th:text="${form.universities.UniversityName}"></td>
+        <td th:text="${form.applicationStatusType}"></td>
+    </tr>
+    </tbody>
+</table>
+</div>
+<!-- Bootstrap JS and Popper.js scripts for table styling -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

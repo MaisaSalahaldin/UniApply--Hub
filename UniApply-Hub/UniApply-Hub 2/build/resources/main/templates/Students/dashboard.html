@@ -1,49 +1,120 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="https://www.thymeleaf.org/">-->
+<!--<head th:replace="fragments :: head">-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<div class="row">-->
+<!--    <div class="col-sm-6">-->
+<!--        <div class="card">-->
+<!--            <div class="card-body">-->
+<!--                <h1 class="nf nf-md-order_bool_ascending_variant"></h1>-->
+<!--                <h5 class="card-title"> Universities </h5>-->
+<!--                <p class="card-text">See All Universities</p>-->
+<!--                <a th:href="@{/Students/showUniversities}" class="stretched-link"></a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <br>-->
+<!--    <div class="col-sm-6">-->
+<!--        <div class="card">-->
+<!--            <div class="card-body">-->
+<!--                <h1 class="pi-user-edit"></h1>-->
+
+<!--                <h5 class="card-title">Profile</h5>-->
+<!--                <p class="card-text">See Your Profile</p>-->
+<!--                <a th:href="@{/Students/profile}" class="stretched-link"></a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+
+<!--<div class="row">-->
+<!--    <div class="col-sm-6">-->
+<!--        <div class="card">-->
+<!--            <div class="card-body">-->
+<!--                <h1 class="nf nf-md-order_bool_ascending_variant"></h1>-->
+<!--                <h5 class="card-title"> Form </h5>-->
+<!--                <p class="card-text">Update Your Form</p>-->
+<!--                <a th:href="@{/Students/studentForm}" class="stretched-link"></a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+
+<!--    <div class="col-sm-6">-->
+<!--        <div class="card">-->
+<!--            <div class="card-body">-->
+<!--                <h1 class="nf nf-md-order_bool_ascending_variant"></h1>-->
+<!--                <h5 class="card-title"> Respond </h5>-->
+<!--                <p class="card-text">see universities respond</p>-->
+<!--                <a th:href="@{/Students/universityRespond}" class="stretched-link"></a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--<footer th:replace="fragments :: footer">-->
+<!--</footer>-->
+<!--</body>-->
+<!--</html>-->
+
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
 <head th:replace="fragments :: head">
 </head>
 <body>
-
-<div class="row">
-    <div class="col-sm-6">
-        <div class="card">
-            <div class="card-body">
-                <h1 class="nf nf-md-order_bool_ascending_variant"></h1>
-                <h5 class="card-title"> Universities </h5>
-                <p class="card-text">See All Universities</p>
-                <a th:href="@{/Students/showUniversities}" class="stretched-link"></a>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="nf nf-md-order_bool_ascending_variant"></h1>
+                    <h5 class="card-title"> Universities </h5>
+                    <p class="card-text">See All Universities</p>
+                    <a th:href="@{/Students/showUniversities}" class="btn btn-primary stretched-link">View Universities</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="nf nf-md-order_bool_ascending_variant"></h1>
+                    <h5 class="card-title">Profile</h5>
+                    <p class="card-text">See Your Profile</p>
+                    <a th:href="@{/Students/profile}" class="btn btn-primary stretched-link">View Profile</a>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-sm-6">
-        <div class="card">
-            <div class="card-body">
-                <h1 class="pi-user-edit"></h1>
-
-                <h5 class="card-title">Profile</h5>
-                <p class="card-text">See Your Profile</p>
-                <a th:href="@{/Students/profile}" class="stretched-link"></a>
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="nf nf-md-order_bool_ascending_variant"></h1>
+                    <h5 class="card-title"> Form </h5>
+                    <p class="card-text">Update Your Form</p>
+                    <a th:href="@{/Students/studentForm}" class="btn btn-primary stretched-link">Update Form</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="nf nf-md-order_bool_ascending_variant"></h1>
+                    <h5 class="card-title"> Respond </h5>
+                    <p class="card-text">See Universities Respond</p>
+                    <a th:href="@{/Students/universityRespond}" class="btn btn-primary stretched-link">View Respond</a>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<div class="row">
-    <br>
-</div>
-<div class="row">
-    <div class="col-sm-6">
-        <div class="card">
-            <div class="card-body">
-                <h1 class="nf nf-md-order_bool_ascending_variant"></h1>
-                <h5 class="card-title"> Form </h5>
-                <p class="card-text">Update Your Form</p>
-                <a th:href="@{/Students/studentForm}" class="stretched-link"></a>
-            </div>
-        </div>
-    </div>
-</div>
-
 <footer th:replace="fragments :: footer">
 </footer>
 </body>
 </html>
+<!---->

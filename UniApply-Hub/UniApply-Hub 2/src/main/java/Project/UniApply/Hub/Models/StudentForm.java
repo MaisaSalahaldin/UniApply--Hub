@@ -21,7 +21,7 @@ public class StudentForm {
         if (this == o) return true;
         if (!(o instanceof StudentForm)) return false;
         StudentForm that = (StudentForm) o;
-        return id == that.id;
+        return id == this.id;
     }
     @Override
     public int hashCode() {
@@ -38,6 +38,7 @@ public class StudentForm {
             joinColumns = {@JoinColumn(name = "studentForm_id")},
             inverseJoinColumns = {@JoinColumn(name = "university_id")})
 private  List<Universities> universitie;
+
 
     public List<Universities> getUniversitie() {
         return universitie;
