@@ -14,5 +14,10 @@ public class HomeController {
         model.addAttribute("StudentsLoggedIn", session.getAttribute("student") != null);
         return "index";
     }
-
+    @GetMapping("/about")
+    public String displayAboutPage(Model model, HttpSession session) {
+        model.addAttribute("loggedIn", session.getAttribute("user") != null);
+        model.addAttribute("clientLoggedIn", session.getAttribute("client") != null);
+        return "/about";
+    }
 }
