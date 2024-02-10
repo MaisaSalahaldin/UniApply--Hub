@@ -44,6 +44,9 @@ public class StudentFormController {
     @GetMapping("/studentForm")
     public String showForm(Model model,HttpServletRequest httpServletRequest) {
         HttpSession session= httpServletRequest.getSession();
+        model.addAttribute("loggedIn", session.getAttribute("user") != null);
+        model.addAttribute("StudentsLoggedIn", session.getAttribute("student") != null);
+
         Students students=authenticationController.getStudentFromSession(session);
         model.addAttribute("title", "Student Form");
         model.addAttribute("educationLevels", StudentForm.EducationLevel.values());
@@ -63,6 +66,9 @@ public class StudentFormController {
     public String submitForm(@ModelAttribute  @Valid StudentForm studentForm,
                              Errors errors, Model model, RedirectAttributes redirectAttributes,HttpServletRequest httpServletRequest) {
         HttpSession session=httpServletRequest.getSession();
+        model.addAttribute("loggedIn", session.getAttribute("user") != null);
+        model.addAttribute("StudentsLoggedIn", session.getAttribute("student") != null);
+
         Students student = authenticationController.getStudentFromSession(session);
         if (errors.hasErrors()) {
             model.addAttribute("title", "Student Form");
