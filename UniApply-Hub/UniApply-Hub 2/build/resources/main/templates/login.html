@@ -1,37 +1,3 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns:th="https://www.thymeleaf.org/">-->
-<!--<head class="text-center" th:replace="fragments :: head">-->
-<!--</head>-->
-
-<!--<body>-->
-<!--<h2 class="text-center" th:text="${title}">Log In</h2>-->
-<!--<form th:object="${loginFormDTO}" method="post" >-->
-<!--  <div>-->
-<!--      <span  class="input-group-text" style="width: 120%;"><input name="" class="form-control" placeholder="Email" type="text" th:for="email" th:field="*{email}"></span>-->
-
-
-<!--  </div>-->
-<!--   <div>-->
-<!--       <span  class="input-group-text" style="width: 120%;"><input name="" class="form-control" placeholder="password" type="text" th:for="password" th:field="*{password}"></span>-->
-
-<!--   </div>-->
-
-<!-- <div class="text-center">-->
-<!--    <button type="submit">Log In</button>-->
-<!-- </div>-->
-<!--   <h6 class="text-center"><br>Don't have an account? Looking to:<br>-->
-<!--       <div>-->
-<!--           <a class="btn btn-primary"  href="/studentRegister"> student</a>-->
-<!--           <a class="btn btn-primary"  href="/UniversityRegister"> University</a>-->
-
-<!--       </div>-->
-<!--   </h6>-->
-<!--</form>-->
-<!--<footer th:replace="fragments :: footer">-->
-<!--</footer>-->
-<!--</body>-->
-<!--</html>-->
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
 <head class="text-center" th:replace="fragments :: head">
@@ -44,11 +10,11 @@
     <form th:object="${loginFormDTO}" method="post" class="needs-validation" novalidate>
         <div class="input-group mb-3">
             <input name="email" class="form-control" placeholder="Email" type="text" th:field="*{email}" required>
-            <div class="invalid-feedback">Please provide a valid email.</div>
+            <p class="error" th:errors="*{email}"></p>
         </div>
         <div class="input-group mb-3">
             <input name="password" class="form-control" placeholder="Password" type="password" th:field="*{password}" required>
-            <div class="invalid-feedback">Please provide a password.</div>
+            <p class="error" th:errors="*{password}"></p>
         </div>
 
         <div class="text-center mb-3">

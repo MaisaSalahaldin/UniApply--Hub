@@ -1,71 +1,13 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns:th="https://www.thymeleaf.org/">-->
-<!--<head th:replace="fragments :: head">-->
-<!--</head>-->
-<!--    <title th:text="${title}">Student Form</title>-->
 
-<!--<body>-->
-<!--<div th:if="${error}" class="alert alert-danger" role="alert">-->
-<!--    <strong th:text="${error}"></strong>-->
-<!--</div>-->
-
-<!--<h2 th:text="${title}"></h2>-->
-
-<!--<form th:object="${studentForm}" method="post">-->
-<!--    <div>-->
-<!--        <label for="firstName">First Name:</label>-->
-<!--        <input type="text" id="firstName" name="firstName" th:field="*{firstName}" required>-->
-<!--    </div>-->
-
-<!--    <div>-->
-<!--        <label for="lastName">Last Name:</label>-->
-<!--        <input type="text" id="lastName" name="lastName" th:field="*{lastName}" required>-->
-<!--    </div>-->
-
-<!--    <div>-->
-<!--        <label for="email">Email:</label>-->
-<!--        <input type="email" id="email" name="email" th:field="*{email}" required>-->
-<!--    </div>-->
-
-<!--    <div>-->
-<!--        <label for="gpa">GPA:</label>-->
-<!--        <input type="number" id="gpa" name="gpa" th:field="*{gpa}" step="0.01" required>-->
-<!--    </div>-->
-
-<!--    <div>-->
-<!--        <label for="educationLevel">Education Level:</label>-->
-<!--        <select id="educationLevel" name="educationLevel" th:field="*{educationLevel}" required>-->
-<!--            <option th:each="level : ${educationLevels}" th:value="${level}" th:text="${level}"></option>-->
-<!--        </select>-->
-<!--    </div>-->
-
-<!--    <div>-->
-<!--        <label for="reference">Reference:</label>-->
-<!--        <input type="text" id="reference" name="reference" th:field="*{reference}" required>-->
-<!--    </div>-->
-
-<!--    <div>-->
-<!--        <label for="coverLetter">Cover Letter:</label>-->
-<!--        <textarea id="coverLetter" name="coverLetter" th:field="*{coverLetter}" required></textarea>-->
-<!--    </div>-->
-
-<!--    <div>-->
-<!--        <label for="usCitizen">US Citizen:</label>-->
-<!--        <input type="checkbox" id="usCitizen" name="usCitizen" th:field="*{usCitizen}">-->
-<!--    </div>-->
-<!--&lt;!&ndash;    <input type="hidden" th:value="*{id}" name="studentFormId">&ndash;&gt;-->
-<!--    <button type="submit" >Update</button>-->
-<!--</form>-->
-
-<!--</body>-->
-<!--</html>-->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
 <head th:replace="fragments :: head">
     <title th:text="${title}">Student Form</title>
 </head>
-
+<nav th:replace="fragments :: navigation">
+</nav>
 <body>
+
 <div th:if="${error}" class="alert alert-danger" role="alert">
     <strong th:text="${error}"></strong>
 </div>
@@ -77,25 +19,25 @@
         <div class="form-group">
             <label for="firstName">First Name:</label>
             <input type="text" id="firstName" name="firstName" th:field="*{firstName}" class="form-control" required>
-            <div class="invalid-feedback">Please provide a first name.</div>
+            <p class="error" th:errors="*{firstName}"></p>
         </div>
 
         <div class="form-group">
             <label for="lastName">Last Name:</label>
             <input type="text" id="lastName" name="lastName" th:field="*{lastName}" class="form-control" required>
-            <div class="invalid-feedback">Please provide a last name.</div>
+            <p class="error" th:errors="*{lastName}"></p>
         </div>
 
         <div class="form-group">
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" th:field="*{email}" class="form-control" required>
-            <div class="invalid-feedback">Please provide a valid email.</div>
+            <p class="error" th:errors="*{email}"></p>
         </div>
 
         <div class="form-group">
             <label for="gpa">GPA:</label>
             <input type="number" id="gpa" name="gpa" th:field="*{gpa}" class="form-control" step="0.01" required>
-            <div class="invalid-feedback">Please provide a valid GPA.</div>
+            <p class="error" th:errors="*{gpa}"></p>
         </div>
 
         <div class="form-group">
@@ -103,24 +45,24 @@
             <select id="educationLevel" name="educationLevel" th:field="*{educationLevel}" class="form-control" required>
                 <option th:each="level : ${educationLevels}" th:value="${level}" th:text="${level}"></option>
             </select>
-            <div class="invalid-feedback">Please select an education level.</div>
+            <p class="error" th:errors="*{educationLevel}"></p>
         </div>
 
         <div class="form-group">
             <label for="reference">Reference:</label>
             <input type="text" id="reference" name="reference" th:field="*{reference}" class="form-control" required>
-            <div class="invalid-feedback">Please provide a reference.</div>
+            <p class="error" th:errors="*{reference}"></p>
         </div>
 
         <div class="form-group">
             <label for="coverLetter">Cover Letter:</label>
             <textarea id="coverLetter" name="coverLetter" th:field="*{coverLetter}" class="form-control" required></textarea>
-            <div class="invalid-feedback">Please provide a cover letter.</div>
+            <p class="error" th:errors="*{coverLetter}"></p>
         </div>
 
         <div class="form-group form-check">
             <input type="checkbox" id="usCitizen" name="usCitizen" th:field="*{usCitizen}" class="form-check-input">
-            <label for="usCitizen" class="form-check-label">US Citizen</label>
+            <p class="error" th:errors="*{usCitizen}"></p>
         </div>
 
         <button type="submit" class="btn btn-primary">Update</button>

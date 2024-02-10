@@ -39,6 +39,9 @@ public class UniversitiesController {
     @GetMapping("/dashboard")
     public String displayDashboard(Model model, HttpServletRequest request) {
         HttpSession session = request.getSession();
+        model.addAttribute("loggedIn", session.getAttribute("user") != null);
+        model.addAttribute("StudentsLoggedIn", session.getAttribute("student") != null);
+
         Universities universities = authenticationController.getUserFromSession(session);
 
         return "Universities/dashboard";
@@ -47,6 +50,9 @@ public class UniversitiesController {
     @GetMapping("/showForms")
     public String displayForms(Model model, HttpServletRequest request) {
         HttpSession session = request.getSession();
+        model.addAttribute("loggedIn", session.getAttribute("user") != null);
+        model.addAttribute("StudentsLoggedIn", session.getAttribute("student") != null);
+
         Universities universities = authenticationController.getUserFromSession(session);
         List<ApplicationStatus> formsOfUniversity = applicationStatusRepository.findFormsByUniversityId(universities.getId());
         //List<ApplicationStatus> applicationStatuses=applicationStatusRepository.findByStudentForm(formsOfUniversity);
@@ -60,9 +66,12 @@ public class UniversitiesController {
 
 
     @PostMapping("/updateStatus")
-    public String updateStatus(@RequestParam("formIds") List<Integer> formIds,
+    public String updateStatus(@RequestParam("formIds") List<Integer> formIds,Model model,
                                @RequestParam("statuses") List<String> statuses,HttpServletRequest request) {
         HttpSession session = request.getSession();
+        model.addAttribute("loggedIn", session.getAttribute("user") != null);
+        model.addAttribute("StudentsLoggedIn", session.getAttribute("student") != null);
+
         Universities universities = authenticationController.getUserFromSession(session);
 
         if (formIds.size() != statuses.size()) {
