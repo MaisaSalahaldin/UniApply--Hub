@@ -96,8 +96,10 @@ public class AuthenticationController {
         }
 // Look up user in database using email they provided in the form
         Students existingStudent = studentsRepository.findByEmail(registerStudentsFormDTO.getEmail());
+        Universities existingUniversityEmail = universitiesRepository.findByEmail(registerStudentsFormDTO.getEmail());
+
         // Send user back to form if email already exists
-        if (existingStudent != null) {
+        if (existingStudent != null || existingUniversityEmail != null) {
             errors.rejectValue("email", "email.alreadyexists", "A user with that email already exists");
             model.addAttribute("title", "Student Register");
             return "studentRegister";
@@ -107,7 +109,7 @@ public class AuthenticationController {
         String verifyPassword = registerStudentsFormDTO.getVerifyPassword();
         if (!password.equals(verifyPassword)) {
             errors.rejectValue("password", "passwords.mismatch", "Passwords do not match");
-            model.addAttribute("title", "Client Register");
+            model.addAttribute("title", "Student Register");
             return "studentRegister";
         }
 
@@ -145,10 +147,11 @@ public class AuthenticationController {
         }
 // Look up user in database using email they provided in the form
         Universities existingUniversityEmail = universitiesRepository.findByEmail(registerUniversitiesFormDTO.getEmail());
+        Students existingStudent = studentsRepository.findByEmail(registerUniversitiesFormDTO.getEmail());
         Universities existingUniversity= universitiesRepository.findByUniversityName(registerUniversitiesFormDTO.getUniversityName());
 
         // Send user back to form if email already exists
-        if (existingUniversityEmail != null ) {
+        if (existingUniversityEmail != null || existingStudent !=null ) {
             errors.rejectValue("email", "email.alreadyexists", "A University with that email already exists");
             model.addAttribute("title", "Register");
             return "UniversityRegister";
@@ -194,7 +197,7 @@ public class AuthenticationController {
 
             model.addAttribute("loggedIn", session.getAttribute("user") != null);
         }
-        else{
+        else if(session.getAttribute("student") != null){
             model.addAttribute("StudentsLoggedIn", session.getAttribute("student") != null);}
 
 

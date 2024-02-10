@@ -307,7 +307,7 @@
                <p>The premier platform that connects both local and international Students with multiplies Universities in our thriving community.
                   Our mission is clear and powerful: to provide convenient access to Universities,  while supporting the  Universities to reach everywhere. .</p>
             </div>
-            <img  th:src="@{../../../assets/img/studentsPhoto.jpg}" class="col-4 medium-drop-shadow" >
+            <img  th:src="@{/assets/img/studentsPhoto.jpg}" class="col-4 medium-drop-shadow" >
 
 
          </div>
@@ -318,11 +318,11 @@
 <section th:fragment="about" class="page-section" id="about">
    <div class="container px-4 px-lg-5">
       <div class="row" style="padding-bottom: 35px;">
-         <img src="../../assets/img/studentsPhoto.jpg" class="img-fluid" alt="University Photo">
+<!--         <img th:src="@{resources/assets/img/studentsPhoto.jpg}" class="img-fluid" >-->
+<!--         <img th:src="@{/assets/studentsPhoto.svg}" id="nav-icon" class="drop-shadow"/>-->
+         <img  th:src="@{/assets/img/studentsPhoto.jpg}" class="col-4 medium-drop-shadow" >
 
-<!--         <img class="col-4 medium-drop-shadow" th:src="@{../assets/img/studentsPhoto.jpg}"/>-->
-<!--         <img class="col-4 medium-drop-shadow" th:src="@{../../../assets/img/8-P4gNDqM17WyBwzM.png}"/>-->
-<!--         <img class="col-4 medium-drop-shadow" th:src="@{../../../assets/img/8-tYeluzGtcXkLAQJ.png}"/>-->
+
       </div>
       <h2 class="text-center mt-0">About Us</h2>
       <hr class="divider" />

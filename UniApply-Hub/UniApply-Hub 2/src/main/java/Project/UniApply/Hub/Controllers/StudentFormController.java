@@ -103,12 +103,17 @@ public class StudentFormController {
     @GetMapping("/dashboard")
     public String displayDashboard(Model model,HttpServletRequest request){
       HttpSession session=request.getSession();
+        model.addAttribute("loggedIn", session.getAttribute("user") != null);
+        model.addAttribute("StudentsLoggedIn", session.getAttribute("student") != null);
 
         return "Students/dashboard";
     }
     @GetMapping("/showUniversities")
     public String displayyAllUniversities(Model model, HttpServletRequest request) {
         HttpSession session=request.getSession();
+        model.addAttribute("loggedIn", session.getAttribute("user") != null);
+        model.addAttribute("StudentsLoggedIn", session.getAttribute("student") != null);
+
         Students students=authenticationController.getStudentFromSession(session);
 
         model.addAttribute("student",students);
@@ -122,6 +127,9 @@ public String applyToUniversityprocessing(Model model,HttpServletRequest request
 , Errors errors ){
 
     HttpSession session=request.getSession();
+    model.addAttribute("loggedIn", session.getAttribute("user") != null);
+    model.addAttribute("StudentsLoggedIn", session.getAttribute("student") != null);
+
     Students students=authenticationController.getStudentFromSession(session);
 if(studentFormRepository.findStudentById(students.getId())==null){
    // model.addAttribute("errorMessage","form needs to be filled");
@@ -155,6 +163,9 @@ if(studentFormRepository.findStudentById(students.getId())==null){
     @GetMapping("/profile")
     public String displayStudentProfile(Model model, HttpServletRequest request) {
         HttpSession session = request.getSession();
+        model.addAttribute("loggedIn", session.getAttribute("user") != null);
+        model.addAttribute("StudentsLoggedIn", session.getAttribute("student") != null);
+
         Students student = authenticationController.getStudentFromSession(session);
         Optional<Students> students=studentsRepository.findById(student.getId());
         if(students.isEmpty()){
@@ -167,7 +178,10 @@ if(studentFormRepository.findStudentById(students.getId())==null){
 @GetMapping("/profile/edit")
     public String UpdateStudentProfile(Model model,HttpServletRequest request){
             HttpSession session=request.getSession();
-            Students students=authenticationController.getStudentFromSession(session);
+    model.addAttribute("loggedIn", session.getAttribute("user") != null);
+    model.addAttribute("StudentsLoggedIn", session.getAttribute("student") != null);
+
+    Students students=authenticationController.getStudentFromSession(session);
             model.addAttribute("information",studentsRepository.findById(students.getId()));
             model.addAttribute("title","Student Information");
         return "Students/profileEdit";
@@ -176,7 +190,10 @@ if(studentFormRepository.findStudentById(students.getId())==null){
     public String updateStudentProfileProcessing(Model model,HttpServletRequest request
         ,@ModelAttribute @Valid  Students updateData,Errors errors){
         HttpSession session=request.getSession();
-        Students student=authenticationController.getStudentFromSession(session);
+    model.addAttribute("loggedIn", session.getAttribute("user") != null);
+    model.addAttribute("StudentsLoggedIn", session.getAttribute("student") != null);
+
+    Students student=authenticationController.getStudentFromSession(session);
 
 if(errors.hasErrors()){
     model.addAttribute("information",studentsRepository.findById(student.getId()));
@@ -196,7 +213,10 @@ if(errors.hasErrors()){
     public String UniversityRespond(Model model,HttpServletRequest request){
 
         HttpSession session=request.getSession();
-        Students student=authenticationController.getStudentFromSession(session);
+    model.addAttribute("loggedIn", session.getAttribute("user") != null);
+    model.addAttribute("StudentsLoggedIn", session.getAttribute("student") != null);
+
+    Students student=authenticationController.getStudentFromSession(session);
 
         List<ApplicationStatus> applicationStatuses=applicationStatusRepository.findByUniversity(student.getId());
 model.addAttribute("applicationStatuses",applicationStatuses);

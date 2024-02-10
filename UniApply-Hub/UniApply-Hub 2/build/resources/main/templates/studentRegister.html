@@ -57,27 +57,36 @@
     <form method="post" th:object="${registerStudentsFormDTO}" class="needs-validation" novalidate>
         <div class="form-group">
             <input name="email" class="form-control" placeholder="Email" type="email" th:field="*{email}" required>
-            <div class="invalid-feedback">Please provide a valid email.</div>
+            <p class="error" th:errors="*{email}"></p>
+
         </div>
         <div class="form-group">
             <input name="password" class="form-control" placeholder="Password" type="password" th:field="*{password}" required>
-            <div class="invalid-feedback">Please provide a password.</div>
+            <p class="error" th:errors="*{password}"></p>
         </div>
         <div class="form-group">
             <input name="verifyPassword" class="form-control" placeholder="Verify Password" type="password" th:field="*{verifyPassword}" required>
-            <div class="invalid-feedback">Please verify your password.</div>
+            <p class="error" th:errors="*{password}"></p>
         </div>
         <div class="form-group">
             <input name="phone" class="form-control" placeholder="Phone" type="text" th:field="*{phone}">
+            <p class="error" th:errors="*{phone}"></p>
+
         </div>
         <div class="form-group">
             <input name="firstName" class="form-control" placeholder="First Name" type="text" th:field="*{firstName}">
+            <p class="error" th:errors="*{firstName}"></p>
+
         </div>
         <div class="form-group">
             <input name="lastName" class="form-control" placeholder="Last Name" type="text" th:field="*{lastName}">
+            <p class="error" th:errors="*{lastName}"></p>
+
         </div>
         <div class="form-group">
             <input name="country" class="form-control" placeholder="Country" type="text" th:field="*{country}">
+            <p class="error" th:errors="*{country}"></p>
+
         </div>
         <div class="text-center">
             <button type="submit" class="btn btn-primary">Register</button>
