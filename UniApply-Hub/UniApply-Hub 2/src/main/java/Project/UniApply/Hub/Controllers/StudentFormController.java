@@ -141,6 +141,10 @@ if(studentFormRepository.findStudentById(students.getId())==null){
    // model.addAttribute("errorMessage","form needs to be filled");
     return "redirect:studentForm";
 }
+if(universitiesRepository.findUniversitiesNotApplied(students.getId()).isEmpty()){
+    return "redirect:dashboard";
+}
+
 
     final List<Universities> newUniversity =
             (List<Universities>) uni.stream().map(id -> universitiesRepository.findById(id).get()).collect(Collectors.toList());
@@ -163,7 +167,7 @@ if(studentFormRepository.findStudentById(students.getId())==null){
     studentsRepository.save(students);
 
 
-        return "redirect:";
+        return "redirect:dashboard";
 }
 
     @GetMapping("/profile")
