@@ -1,59 +1,4 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
-<!--<head>-->
-<!--    <title>University Forms</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--<h1>Student Forms for University: <span th:text="${nameOfUniversity}"></span></h1>-->
-<!--<form th:action="@{/Universities/updateStatus}" method="post">-->
 
-<!--<table border="1">-->
-<!--    <thead>-->
-<!--    <tr>-->
-
-<!--        <th>First Name</th>-->
-<!--        <th>Last Name</th>-->
-<!--        <th>Email</th>-->
-<!--        <th>GPA</th>-->
-<!--        <th>Reference</th>-->
-<!--        <th>Cover Letter</th>-->
-<!--        <th>Us Citizen</th>-->
-<!--        <th>Education Level</th>-->
-<!--        <th>Status</th>-->
-<!--        &lt;!&ndash; Add more headers as needed &ndash;&gt;-->
-<!--    </tr>-->
-<!--    </thead>-->
-<!--    <tbody>-->
-<!--    &lt;!&ndash; Loop through the list of forms &ndash;&gt;-->
-<!--    <tr th:each="form : ${formsOfUniversity}">-->
-<!--        <td th:text="${form.studentForm.firstName}"></td>-->
-<!--        <td th:text="${form.studentForm.lastName}"></td>-->
-<!--        <td th:text="${form.studentForm.email}"></td>-->
-<!--        <td th:text="${form.studentForm.gpa}"></td>-->
-<!--        <td th:text="${form.studentForm.reference}"></td>-->
-<!--        <td th:text="${form.studentForm.coverLetter}"></td>-->
-<!--        <td th:text="${form.studentForm.usCitizen}"></td>-->
-<!--        <td th:text="${form.studentForm.educationLevel} ? ${form.studentForm.educationLevel} : ''"></td>-->
-<!--        <td>-->
-<!--            <select name="statuses" id="statuses" required>-->
-<!--                <option value="APPROVED" th:selected="${form.applicationStatusType.toString() == 'APPROVED'}">Approved</option>-->
-<!--                <option value="DENIED" th:selected="${form.applicationStatusType.toString() == 'DENIED'}">Denied</option>-->
-<!--                <option value="PENDING" th:selected="${form.applicationStatusType.toString() == 'PENDING'}">Pending</option>-->
-
-<!--            </select>-->
-<!--            &lt;!&ndash; Include a hidden input for the form ID &ndash;&gt;-->
-<!--            <input type="hidden" name="formIds" th:value="${form.studentForm.id}" />-->
-<!--        </td>-->
-<!--    </tr>-->
-<!--    </tbody>-->
-<!--</table>-->
-<!--<button type="submit">Update Status</button>-->
-
-
-<!--</form>-->
-
-<!--</body>-->
-<!--</html>-->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -63,6 +8,9 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
+<nav th:replace="fragments :: navigation">
+</nav>
+<br> <br>
 <body>
 <div class="container mt-5">
     <h1>Student Forms for University: <span th:text="${nameOfUniversity}"></span></h1>
