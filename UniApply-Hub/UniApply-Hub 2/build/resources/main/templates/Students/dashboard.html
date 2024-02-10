@@ -67,9 +67,15 @@
 <head th:replace="fragments :: head">
 </head>
 <nav th:replace="fragments :: navigation">
+
 </nav>
 <body>
 <div class="container mt-5">
+    <div class="mb-4"></div>
+
+    <div th:if="${successMessage}" class="alert alert-success" role="alert">
+        <strong>Success:</strong> <span th:text="${successMessage}"></span>
+    </div>
     <div class="row">
         <div class="col-md-6 mb-4">
             <div class="card">

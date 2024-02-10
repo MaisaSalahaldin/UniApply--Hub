@@ -13,6 +13,9 @@
 <body>
 
 <div class="container mt-5">
+    <div th:if="${successMessage}" class="alert alert-success" role="alert">
+        <strong>Success:</strong> <span th:text="${successMessage}"></span>
+    </div>
     <h2 th:text="${title}"></h2>
     <form method="post">
         <div class="form-group">

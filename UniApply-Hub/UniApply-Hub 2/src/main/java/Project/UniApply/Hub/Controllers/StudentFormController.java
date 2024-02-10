@@ -130,7 +130,7 @@ public class StudentFormController {
 @PostMapping("/showUniversities")
 public String applyToUniversityprocessing(Model model,HttpServletRequest request
 ,@ModelAttribute("student") Students student,@RequestParam(value = "uni" , required = false) ArrayList<Integer> uni
-, Errors errors ){
+, Errors errors, RedirectAttributes redirectAttributes ){
 
     HttpSession session=request.getSession();
     model.addAttribute("loggedIn", session.getAttribute("user") != null);
@@ -161,9 +161,10 @@ if(studentFormRepository.findStudentById(students.getId())==null){
     studentFormRepository.save(studentForm);
 
     studentsRepository.save(students);
+    redirectAttributes.addFlashAttribute("successMessage", "Your application has been successfully sent to the selected universities.");
 
 
-        return "redirect:";
+        return "redirect:dashboard";
 }
 
     @GetMapping("/profile")
